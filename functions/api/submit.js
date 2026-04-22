@@ -151,8 +151,8 @@ function row(label, value) {
 
 function buildHtml(d) {
   const korterOnly = d.objektTyyp === 'korter';
-  const seisukordMap = { vajab_remonti: 'Vajab remonti', renoveeritud: 'Renoveeritud', uusarendus: 'Uusarendus' };
-  const asukohtMap = { otsakorter: 'Otsakorter', keskmine: 'Keskmine korter' };
+  const seisukordMap = { vajab_kapitaalremonti: 'Vajab kapitaalremonti', vajab_varskendust: 'Vajab värskendust', renoveeritud: 'Renoveeritud', uusarendus: 'Uusarendus' };
+  const asukohtMap = { otsakorter: 'Otsakorter', keskmine: 'Maja keskel' };
   return `<!doctype html>
 <html><body style="font-family:-apple-system,Segoe UI,Arial,sans-serif;color:#111827">
   <h2 style="margin:0 0 12px">Uus päring kodulehelt</h2>
