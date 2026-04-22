@@ -1282,12 +1282,13 @@
       if (!el) return;
       var val = '';
       if (structured) {
-        if (f === 'aadress_full') val = structured.ipikkaadress || structured.pikkaadress || structured.aadresstekst || prefillAddress || '';
-        else if (f === 'zip') val = structured.sihtnumber || structured.postiindeks || '';
-        else if (f === 'street') val = structured.liikluspind || structured.taisnimetus_PIKK || '';
-        else if (f === 'house') val = structured.aadress_number || structured.number || '';
-        else if (f === 'apartment') val = structured.kort_nr || structured.apartment || '';
-        else val = structured[f] || '';
+        if (f === 'aadress_full') val = structured.ipikkaadress || structured.pikkaadress || structured.taisaadress || prefillAddress || '';
+        else if (f === 'adrid') val = structured.adr_id || structured.ads_oid || '';
+        else if (f === 'ehak') val = structured.ehak || '';
+        else if (f === 'zip') val = structured.sihtnumber || '';
+        else if (f === 'street') val = structured.liikluspind || '';
+        else if (f === 'house') val = structured.aadress_nr || '';
+        else if (f === 'apartment') val = structured.kort_nr || '';
       }
       el.value = val || '';
     });
