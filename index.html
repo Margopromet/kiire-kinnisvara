@@ -650,6 +650,15 @@
       outline: 3px solid rgba(22, 78, 130, 0.4);
       outline-offset: 2px;
     }
+  
+    /* In-ADS autocomplete */
+    .hero-input-wrap { position: relative; flex: 1 1 auto; min-width: 0; }
+    .inads-suggest { position: absolute; left: 0; right: 0; top: calc(100% + 4px); background: #fff; border: 1px solid #d0d7de; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); max-height: 280px; overflow-y: auto; z-index: 1000; display: none; margin: 0; padding: 4px 0; list-style: none; }
+    .inads-suggest.open { display: block; }
+    .inads-suggest [role="option"] { padding: 10px 14px; cursor: pointer; color: #1f2328; font-size: 14px; line-height: 1.35; }
+    .inads-suggest [role="option"]:hover, .inads-suggest [role="option"][aria-selected="true"] { background: #f1f5ff; }
+    .hero-form { position: relative; }
+  
   </style>
 
   <!-- JSON-LD: LocalBusiness -->
@@ -815,14 +824,22 @@
           <label id="hero-form-label" for="heroAddress" class="visually-hidden">
             Sisesta oma objekti aadress, et saada kiire pakkumine
           </label>
-          <input
-            type="text"
-            id="heroAddress"
-            name="heroAddress"
-            placeholder="Sisesta objekti aadress, nt Tartu mnt 10, Tallinn"
-            autocomplete="street-address"
-            aria-describedby="heroFormError"
-          />
+          <div class="hero-input-wrap">
+            <input
+              type="text"
+              id="heroAddress"
+              name="heroAddress"
+              placeholder="Sisesta objekti aadress, nt Tartu mnt 10, Tallinn"
+              autocomplete="off"
+              role="combobox"
+              aria-autocomplete="list"
+              aria-expanded="false"
+              aria-controls="heroSuggest"
+              aria-haspopup="listbox"
+              aria-describedby="heroFormError"
+            />
+            <ul id="heroSuggest" class="inads-suggest" role="listbox" aria-label="Aadresside soovitused"></ul>
+          </div>
           <button type="submit" class="btn">Jätka</button>
         </form>
         <div class="hero-form-label">
@@ -1122,6 +1139,13 @@
       <div class="field">
         <label for="aadress">Objekti aadress</label>
         <input type="text" id="aadress" name="aadress" placeholder="nt Tartu mnt 10, Tallinn" required />
+        <input type="hidden" id="adrid" name="adrid" />
+        <input type="hidden" id="ehak" name="ehak" />
+        <input type="hidden" id="zip" name="zip" />
+        <input type="hidden" id="street" name="street" />
+        <input type="hidden" id="house" name="house" />
+        <input type="hidden" id="apartment" name="apartment" />
+        <input type="hidden" id="aadress_full" name="aadress_full" />
         <span class="field-error" data-for="aadress">Palun sisesta täielik aadress — tänav, majanumber ja linn.</span>
       </div>
 
@@ -1245,7 +1269,7 @@
     );
   }
 
-  function openModal(prefillAddress) {
+  function openModal(prefillAddress, structured) {
     lastFocused = document.activeElement;
     backdrop.classList.add('open');
     document.body.classList.add('modal-open');
@@ -1253,6 +1277,22 @@
       var addr = document.getElementById('aadress');
       if (addr) addr.value = prefillAddress;
     }
+    // Stash structured In-ADS fields
+    var _structFields = ['adrid','ehak','zip','street','house','apartment','aadress_full'];
+    _structFields.forEach(function (f) {
+      var el = document.getElementById(f);
+      if (!el) return;
+      var val = '';
+      if (structured) {
+        if (f === 'aadress_full') val = structured.ipikkaadress || structured.pikkaadress || structured.aadresstekst || prefillAddress || '';
+        else if (f === 'zip') val = structured.sihtnumber || structured.postiindeks || '';
+        else if (f === 'street') val = structured.liikluspind || structured.taisnimetus_PIKK || '';
+        else if (f === 'house') val = structured.aadress_number || structured.number || '';
+        else if (f === 'apartment') val = structured.kort_nr || structured.apartment || '';
+        else val = structured[f] || '';
+      }
+      el.value = val || '';
+    });
     // Focus first focusable (usually close button or first field)
     setTimeout(function () {
       var focusables = getFocusable();
@@ -1307,26 +1347,12 @@
 
   heroForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    var val = heroAddress.value.trim();
-    if (!isLikelyAddress(val)) {
-      heroForm.classList.add('invalid');
-      heroFormError.classList.add('visible');
-      heroAddress.setAttribute('aria-invalid', 'true');
-      heroAddress.focus();
-      return;
-    }
+    var val = (heroAddress.value || '').trim();
     heroForm.classList.remove('invalid');
     heroFormError.classList.remove('visible');
     heroAddress.removeAttribute('aria-invalid');
-    openModal(val);
-  });
-
-  heroAddress.addEventListener('input', function () {
-    if (heroForm.classList.contains('invalid') && isLikelyAddress(heroAddress.value)) {
-      heroForm.classList.remove('invalid');
-      heroFormError.classList.remove('visible');
-      heroAddress.removeAttribute('aria-invalid');
-    }
+    var sel = (typeof window.__inadsSelected === 'function') ? window.__inadsSelected() : null;
+    openModal(val, sel);
   });
 
   /* ================= Dynamic: floor fields only for korter ================= */
@@ -1461,6 +1487,93 @@
         submitBtn.textContent = originalLabel;
       });
   });
-</script>
+
+  /* ================= In-ADS autocomplete ================= */
+  (function () {
+    var INADS = 'https://inaadress.maaamet.ee/inaadress/gazetteer';
+    var input = document.getElementById('heroAddress');
+    var list = document.getElementById('heroSuggest');
+    if (!input || !list) return;
+    var debounceT, currentItems = [], activeIdx = -1, selected = null;
+
+    function fetchSuggest(q, cb) {
+      var url = INADS + '?address=' + encodeURIComponent(q) + '&results=10&appartment=1&unik=1&features=1';
+      fetch(url, { headers: { 'Accept': 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { cb((d && d.addresses) || []); })
+        .catch(function () {
+          var cbName = '__inads_cb_' + Date.now() + '_' + Math.floor(Math.random() * 1e6);
+          window[cbName] = function (d) {
+            try { cb((d && d.addresses) || []); } finally { try { delete window[cbName]; s.parentNode.removeChild(s); } catch (_) {} }
+          };
+          var s = document.createElement('script');
+          s.src = url + '&callback=' + cbName;
+          document.head.appendChild(s);
+        });
+    }
+
+    function openList() { list.classList.add('open'); input.setAttribute('aria-expanded', 'true'); }
+    function closeList() { list.classList.remove('open'); input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); activeIdx = -1; }
+    function setActive(i) {
+      activeIdx = i;
+      for (var k = 0; k < list.children.length; k++) list.children[k].setAttribute('aria-selected', k === i ? 'true' : 'false');
+      if (i >= 0 && list.children[i]) { input.setAttribute('aria-activedescendant', list.children[i].id); list.children[i].scrollIntoView({ block: 'nearest' }); }
+    }
+    function pick(i) {
+      var a = currentItems[i]; if (!a) return;
+      var full = a.ipikkaadress || a.pikkaadress || a.aadresstekst || '';
+      input.value = full;
+      selected = a;
+      closeList();
+    }
+
+    function render(items) {
+      currentItems = items || [];
+      activeIdx = -1;
+      list.innerHTML = '';
+      if (!currentItems.length) { closeList(); return; }
+      currentItems.forEach(function (a, i) {
+        var li = document.createElement('li');
+        li.id = 'heroSuggest-opt-' + i;
+        li.setAttribute('role', 'option');
+        li.setAttribute('aria-selected', 'false');
+        li.textContent = a.ipikkaadress || a.pikkaadress || a.aadresstekst || '';
+        li.addEventListener('mouseover', function () { setActive(i); });
+        li.addEventListener('mousedown', function (e) { e.preventDefault(); pick(i); });
+        list.appendChild(li);
+      });
+      openList();
+    }
+
+    input.addEventListener('input', function () {
+      var q = input.value.trim();
+      selected = null;
+      clearTimeout(debounceT);
+      if (q.length < 3) { closeList(); return; }
+      debounceT = setTimeout(function () { fetchSuggest(q, render); }, 200);
+    });
+
+    input.addEventListener('keydown', function (e) {
+      var open = list.classList.contains('open');
+      if (e.key === 'ArrowDown') {
+        if (!open && currentItems.length) { openList(); setActive(0); e.preventDefault(); return; }
+        if (open) { e.preventDefault(); setActive((activeIdx + 1) % currentItems.length); }
+      } else if (e.key === 'ArrowUp') {
+        if (open) { e.preventDefault(); setActive((activeIdx - 1 + currentItems.length) % currentItems.length); }
+      } else if (e.key === 'Enter') {
+        if (open && activeIdx >= 0) { e.preventDefault(); pick(activeIdx); }
+      } else if (e.key === 'Escape') {
+        if (open) { e.preventDefault(); closeList(); }
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (e.target !== input && !list.contains(e.target)) closeList();
+    });
+
+    window.__inadsSelected = function () { return selected; };
+  })();
+
+  </script>
 </body>
 </html>
