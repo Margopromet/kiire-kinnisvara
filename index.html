@@ -1125,6 +1125,8 @@
       Until the backend is deployed, the POST will 404 and the error branch below will render.
     -->
     <form class="form" id="leadForm" action="/api/submit" method="POST" enctype="multipart/form-data" novalidate>
+      <!-- Honeypot: peaks jääma tühjaks; robotid täidavad selle ära -->
+      <input type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;opacity:0;pointer-events:none" />
       <div class="form-row">
         <div class="field">
           <label for="nimi">Nimi</label>
@@ -1140,7 +1142,7 @@
 
       <div class="field">
         <label for="email">E-post</label>
-        <input type="email" id="email" name="email" autocomplete="email" required />
+        <input type="email" id="email" name="email" autocomplete="email" />
         <span class="field-error" data-for="email">Palun sisesta kehtiv e-posti aadress.</span>
       </div>
 
