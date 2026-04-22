@@ -50,6 +50,8 @@ export async function onRequest(context) {
   const turuhinnastMadalam = get('turuhinnast_madalam');
   const noustumine = get('noustumine');
   const kommentaar = get('kommentaar');
+  const seisukord = get('seisukord');
+  const asukohtMajas = get('asukoht_majas');
 
   // Required fields
   if (!nimi || !telefon || !noustumine) {
@@ -89,6 +91,8 @@ export async function onRequest(context) {
     kuulutusLink, korrus, viimaneKorrus, turuhinnastMadalam,
     kommentaar, noustumine,
     aadressFull, adrid, ehak, zip, street, house, apartment,
+    seisukord,
+    asukohtMajas,
     attachmentsCount: attachments.length,
   });
 
@@ -147,6 +151,8 @@ function row(label, value) {
 
 function buildHtml(d) {
   const korterOnly = d.objektTyyp === 'korter';
+  const seisukordMap = { vajab_remonti: 'Vajab remonti', renoveeritud: 'Renoveeritud', uusarendus: 'Uusarendus' };
+  const asukohtMap = { otsakorter: 'Otsakorter', keskmine: 'Keskmine korter' };
   return `<!doctype html>
 <html><body style="font-family:-apple-system,Segoe UI,Arial,sans-serif;color:#111827">
   <h2 style="margin:0 0 12px">Uus päring kodulehelt</h2>
@@ -167,6 +173,8 @@ function buildHtml(d) {
     ${row('Kuulutuse link', d.kuulutusLink)}
     ${korterOnly ? row('Korrus', d.korrus) : ''}
     ${korterOnly ? row('Viimane korrus', d.viimaneKorrus === 'on' || d.viimaneKorrus === 'true' ? 'Jah' : '') : ''}
+    ${korterOnly ? row('Korteri seisukord', seisukordMap[d.seisukord] || '') : ''}
+    ${korterOnly ? row('Korteri asukoht majas', asukohtMap[d.asukohtMajas] || '') : ''}
     ${row('Nõus turuhinnast madalama hinnaga', d.turuhinnastMadalam ? 'Jah' : '')}
     ${row('Kommentaar', d.kommentaar)}
     ${row('Nõusolek andmete töötlemiseks', d.noustumine ? 'Jah' : '')}

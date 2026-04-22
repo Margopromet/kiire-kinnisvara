@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ostame korterid ja majad kiiresti Tallinnas ja Harjumaal | [FIRMA NIMI]</title>
-  <meta name="description" content="MÃÂ¼ÃÂ¼ge oma korter vÃÂµi maja kiirelt. Ostame kinnisvara vÃÂ¤lja sularahas 7 pÃÂ¤evaga Tallinnas ja Harjumaal. Ilma maakleritasudeta, mis tahes seisukorras. Pakkumine kirjalikult." />
+  <meta name="description" content="Müüge oma korter või maja kiirelt. Ostame kinnisvara välja sularahas 7 päevaga Tallinnas ja Harjumaal. Ilma maakleritasudeta, mis tahes seisukorras. Pakkumine kirjalikult." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://example.ee/" />
 
@@ -12,14 +12,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="et_EE" />
   <meta property="og:title" content="Ostame korterid ja majad kiiresti Tallinnas ja Harjumaal" />
-  <meta property="og:description" content="Kiire ja aus kinnisvara vÃÂ¤ljaost Tallinnas ja Harjumaal. Sularaha 7 pÃÂ¤evaga, mis tahes seisukorras. Pakkumine ainult kirjalikult." />
+  <meta property="og:description" content="Kiire ja aus kinnisvara väljaost Tallinnas ja Harjumaal. Sularaha 7 päevaga, mis tahes seisukorras. Pakkumine ainult kirjalikult." />
   <meta property="og:url" content="https://example.ee/" />
   <meta property="og:site_name" content="[FIRMA NIMI]" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Ostame korterid ja majad kiiresti Tallinnas ja Harjumaal" />
-  <meta name="twitter:description" content="Kiire ja aus kinnisvara vÃÂ¤ljaost Tallinnas ja Harjumaal. Sularaha 7 pÃÂ¤evaga, mis tahes seisukorras." />
+  <meta name="twitter:description" content="Kiire ja aus kinnisvara väljaost Tallinnas ja Harjumaal. Sularaha 7 päevaga, mis tahes seisukorras." />
 
   <!-- Critical inline CSS -->
   <style>
@@ -414,7 +414,7 @@
       transition: transform 0.2s ease;
       flex-shrink: 0;
     }
-    details.faq-item[open] summary::after { content: "Ã¢ÂÂ"; }
+    details.faq-item[open] summary::after { content: "−"; }
     details.faq-item .faq-body {
       padding: 0 24px 22px;
       color: var(--color-text-muted);
@@ -575,6 +575,14 @@
     .floor-row .checkbox { padding-bottom: 10px; }
     .floor-wrap { display: none; }
     .floor-wrap.visible { display: block; }
+    .korter-only { display: none; }
+    .korter-only.visible { display: block; }
+    .segmented { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+    .segmented > label { flex: 1 1 auto; min-width: 140px; display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px; border: 1px solid var(--color-border); border-radius: 999px; font-size: 0.9rem; color: var(--color-text-muted); background: #fff; cursor: pointer; transition: border-color .15s, color .15s, background .15s; text-align: center; }
+    .segmented > label:hover { border-color: var(--color-primary); color: var(--color-text); }
+    .segmented > label input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; width: 0; height: 0; margin: 0; }
+    .segmented > label:has(input[type="radio"]:checked) { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+    @media (max-width: 480px) { .segmented > label { flex: 1 1 100%; } }
     .form .btn { width: 100%; padding: 15px 26px; }
     .form-status {
       display: none;
@@ -667,7 +675,7 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "[FIRMA NIMI]",
-    "description": "Kiire kinnisvara vÃÂ¤ljaost Tallinnas ja Harjumaal. Ostame korterid ja majad sularahas, mis tahes seisukorras. Pakkumine kirjalikult.",
+    "description": "Kiire kinnisvara väljaost Tallinnas ja Harjumaal. Ostame korterid ja majad sularahas, mis tahes seisukorras. Pakkumine kirjalikult.",
     "url": "https://example.ee/",
     "telephone": "+372 XXX XXXX",
     "email": "info@example.ee",
@@ -681,7 +689,7 @@
       { "@type": "City", "name": "Tallinn" },
       { "@type": "AdministrativeArea", "name": "Harjumaa" }
     ],
-    "priceRange": "Ã¢ÂÂ¬Ã¢ÂÂ¬"
+    "priceRange": "€€"
   }
   </script>
 
@@ -693,18 +701,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Kas te vÃÂµtate vahendustasu?",
+        "name": "Kas te võtate vahendustasu?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ei. Me ei ole maaklerid Ã¢ÂÂ me ise ostame teilt kinnisvara vÃÂ¤lja. Teilt ei vÃÂµeta vahendus- ega teenustasu. Pakkumises kirjas olev summa on ka see, mis teie kontole jÃÂµuab."
+          "text": "Ei. Me ei ole maaklerid — me ise ostame teilt kinnisvara välja. Teilt ei võeta vahendus- ega teenustasu. Pakkumises kirjas olev summa on ka see, mis teie kontole jõuab."
         }
       },
       {
         "@type": "Question",
-        "name": "Kui kiiresti saate korteri vÃÂ¤lja osta?",
+        "name": "Kui kiiresti saate korteri välja osta?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tavaliselt sÃÂµlmime notariaalse tehingu 7Ã¢ÂÂ14 pÃÂ¤eva jooksul pÃÂ¤rast ÃÂ¼levaatust. Kui olukord nÃÂµuab kiirust, suudame sageli tegutseda ka kiiremini."
+          "text": "Tavaliselt sõlmime notariaalse tehingu 7–14 päeva jooksul pärast ülevaatust. Kui olukord nõuab kiirust, suudame sageli tegutseda ka kiiremini."
         }
       },
       {
@@ -712,7 +720,7 @@
         "name": "Millises seisukorras korterit te ostate?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ostame objekti vÃÂ¤lja mis tahes seisukorras Ã¢ÂÂ renoveerimata, vana, kahjustustega vÃÂµi asjadega tÃÂ¤idetud. Teil pole vaja midagi koristada ega remontida."
+          "text": "Ostame objekti välja mis tahes seisukorras — renoveerimata, vana, kahjustustega või asjadega täidetud. Teil pole vaja midagi koristada ega remontida."
         }
       },
       {
@@ -720,15 +728,15 @@
         "name": "Kas teie pakkumises on peidetud tingimusi?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ei. Pakkumine esitatakse ainult kirjalikult ja on lÃÂµplik. KÃÂµik tingimused on selgelt sÃÂµnastatud ning tehing vormistatakse notari juures."
+          "text": "Ei. Pakkumine esitatakse ainult kirjalikult ja on lõplik. Kõik tingimused on selgelt sõnastatud ning tehing vormistatakse notari juures."
         }
       },
       {
         "@type": "Question",
-        "name": "Mis saab, kui korteril on hÃÂ¼poteek vÃÂµi vÃÂµlgnevused?",
+        "name": "Mis saab, kui korteril on hüpoteek või võlgnevused?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "HÃÂ¼poteegid, kommunaalvÃÂµlad, ÃÂ¼histu vÃÂµlgnevused ja muud koormatised saab tehingu kÃÂ¤igus korraldada. See on meie igapÃÂ¤evane tÃÂ¶ÃÂ¶ ja me aitame kogu paberimajanduse korda saada."
+          "text": "Hüpoteegid, kommunaalvõlad, ühistu võlgnevused ja muud koormatised saab tehingu käigus korraldada. See on meie igapäevane töö ja me aitame kogu paberimajanduse korda saada."
         }
       },
       {
@@ -736,7 +744,7 @@
         "name": "Kas tehing on seaduslik ja turvaline?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Jah. Iga tehing sÃÂµlmitakse Eesti notari juures vastavalt kehtivale seadusandlusele. Teie ÃÂµigused on kaitstud kogu protsessi vÃÂ¤ltel."
+          "text": "Jah. Iga tehing sõlmitakse Eesti notari juures vastavalt kehtivale seadusandlusele. Teie õigused on kaitstud kogu protsessi vältel."
         }
       },
       {
@@ -744,7 +752,7 @@
         "name": "Kas teete pakkumise telefoni teel?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ei. Hinnapakkumist me telefoni teel ei tee. Pakkumine esitatakse alati kirjalikult pÃÂ¤rast objekti ÃÂ¼levaatust Ã¢ÂÂ nii on tingimused ÃÂ¼hetaoliselt mÃÂµistetavad mÃÂµlemale poolele. Telefon ja e-post on mÃÂµeldud vaid ÃÂ¼levaatuse kokkuleppimiseks."
+          "text": "Ei. Hinnapakkumist me telefoni teel ei tee. Pakkumine esitatakse alati kirjalikult pärast objekti ülevaatust — nii on tingimused ühetaoliselt mõistetavad mõlemale poolele. Telefon ja e-post on mõeldud vaid ülevaatuse kokkuleppimiseks."
         }
       },
       {
@@ -752,31 +760,31 @@
         "name": "Kes katab notaritasud ja muud kulud?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Notaritasu katame meie, kui ei lepita kokku teisiti. Teil ei teki tehingust tÃÂ¤iendavaid kulusid Ã¢ÂÂ kogu pakkumisse mÃÂ¤rgitud summa jÃÂµuab teie kontole."
+          "text": "Notaritasu katame meie, kui ei lepita kokku teisiti. Teil ei teki tehingust täiendavaid kulusid — kogu pakkumisse märgitud summa jõuab teie kontole."
         }
       },
       {
         "@type": "Question",
-        "name": "Kui kiiresti saab raha pÃÂ¤rast ÃÂ¼levaatust?",
+        "name": "Kui kiiresti saab raha pärast ülevaatust?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Kui pakkumine sobib, vormistame notariaalse lepingu tavaliselt 7Ã¢ÂÂ14 pÃÂ¤eva jooksul. Raha kantakse teie kontole tehingu pÃÂ¤eval Ã¢ÂÂ mitte osamaksetena hiljem."
+          "text": "Kui pakkumine sobib, vormistame notariaalse lepingu tavaliselt 7–14 päeva jooksul. Raha kantakse teie kontole tehingu päeval — mitte osamaksetena hiljem."
         }
       },
       {
         "@type": "Question",
-        "name": "Kas saab mÃÂ¼ÃÂ¼a, kui objektil on ÃÂ¼ÃÂ¼rnikud?",
+        "name": "Kas saab müüa, kui objektil on üürnikud?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Jah. Arvestame ÃÂ¼ÃÂ¼rilepinguga pakkumise tegemisel ning lepime ÃÂ¼ksikasjad kokku enne tehingut. MÃÂµnel juhul jÃÂ¤ÃÂ¤b ÃÂ¼ÃÂ¼rileping kehtima, mÃÂµnel juhul lÃÂµpetatakse see vastastikusel kokkuleppel."
+          "text": "Jah. Arvestame üürilepinguga pakkumise tegemisel ning lepime üksikasjad kokku enne tehingut. Mõnel juhul jääb üürileping kehtima, mõnel juhul lõpetatakse see vastastikusel kokkuleppel."
         }
       },
       {
         "@type": "Question",
-        "name": "Mis siis, kui objektil on mitu kaaspÃÂ¤rijat vÃÂµi kaasomanikku?",
+        "name": "Mis siis, kui objektil on mitu kaaspärijat või kaasomanikku?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "TÃÂ¶ÃÂ¶tame regulaarselt olukordades, kus osapooli on mitu. Tehingu tegemiseks on vaja kÃÂµigi kaasomanike vÃÂµi pÃÂ¤rijate nÃÂµusolekut Ã¢ÂÂ aitame vajalike dokumentide ja nÃÂµusolekute kogumisel."
+          "text": "Töötame regulaarselt olukordades, kus osapooli on mitu. Tehingu tegemiseks on vaja kõigi kaasomanike või pärijate nõusolekut — aitame vajalike dokumentide ja nõusolekute kogumisel."
         }
       },
       {
@@ -784,7 +792,7 @@
         "name": "Millised dokumendid on tehinguks vajalikud?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ÃÂldjuhul lÃÂ¤heb vaja isikut tÃÂµendavat dokumenti, omandiÃÂµigust tÃÂµendavat paberit ning ÃÂ¼histu tÃÂµendit vÃÂµlgnevuste kohta. PÃÂ¤randvara korral lisandub pÃÂ¤rimistunnistus. TÃÂ¤pse nimekirja saadame teile pÃÂ¤rast pÃÂ¤ringut."
+          "text": "Üldjuhul läheb vaja isikut tõendavat dokumenti, omandiõigust tõendavat paberit ning ühistu tõendit võlgnevuste kohta. Pärandvara korral lisandub pärimistunnistus. Täpse nimekirja saadame teile pärast päringut."
         }
       }
     ]
@@ -801,9 +809,9 @@
     </a>
     <nav class="nav" aria-label="Pealeht">
       <a href="#eelised">Eelised</a>
-      <a href="#protsess">Kuidas see kÃÂ¤ib</a>
-      <a href="#kysimused">KÃÂ¼simused</a>
-      <a href="#kontakt" class="btn">Saada pÃÂ¤ring</a>
+      <a href="#protsess">Kuidas see käib</a>
+      <a href="#kysimused">Küsimused</a>
+      <a href="#kontakt" class="btn">Saada päring</a>
     </nav>
   </div>
 </header>
@@ -815,9 +823,9 @@
     <div class="container hero-grid">
       <div>
         <span class="hero-eyebrow">Tallinn ja Harjumaa</span>
-        <h1 id="hero-title">Ostame teie korteri vÃÂµi maja kiirelt Ã¢ÂÂ raha kÃÂ¤tte 7 pÃÂ¤eva jooksul</h1>
+        <h1 id="hero-title">Ostame teie korteri või maja kiirelt — raha kätte 7 päeva jooksul</h1>
         <p class="hero-sub">
-          Kui soovite kinnisvara mÃÂ¼ÃÂ¼a ilma pikkade ootuste, maakleritasude ja nÃÂ¤itamisteta, teeme objekti ÃÂ¼levaatuse ja ausa kirjaliku pakkumise paari pÃÂ¤evaga. Ostame mis tahes seisukorras korterid ja majad Tallinnas ja kogu Harjumaal.
+          Kui soovite kinnisvara müüa ilma pikkade ootuste, maakleritasude ja näitamisteta, teeme objekti ülevaatuse ja ausa kirjaliku pakkumise paari päevaga. Ostame mis tahes seisukorras korterid ja majad Tallinnas ja kogu Harjumaal.
         </p>
 
         <form class="hero-form" id="heroForm" novalidate aria-labelledby="hero-form-label">
@@ -840,13 +848,13 @@
             />
             <ul id="heroSuggest" class="inads-suggest" role="listbox" aria-label="Aadresside soovitused"></ul>
           </div>
-          <button type="submit" class="btn">JÃÂ¤tka</button>
+          <button type="submit" class="btn">Jätka</button>
         </form>
         <div class="hero-form-label">
-          Sisesta oma objekti aadress, et saada kiire pakkumine. Pakkumine esitatakse ainult kirjalikult, pÃÂ¤rast objekti ÃÂ¼levaatust.
+          Sisesta oma objekti aadress, et saada kiire pakkumine. Pakkumine esitatakse ainult kirjalikult, pärast objekti ülevaatust.
         </div>
         <div id="heroFormError" class="hero-form-error" role="alert">
-          Palun sisesta tÃÂ¤ielik aadress Ã¢ÂÂ tÃÂ¤nav, majanumber ja linn vÃÂµi vald.
+          Palun sisesta täielik aadress — tänav, majanumber ja linn või vald.
         </div>
 
         <div class="hero-trust">
@@ -854,23 +862,23 @@
         </div>
       </div>
 
-      <aside class="hero-visual" aria-label="ÃÂlevaade">
-        <h3>LÃÂ¼hidalt teenusest</h3>
+      <aside class="hero-visual" aria-label="Ülevaade">
+        <h3>Lühidalt teenusest</h3>
         <div class="hero-stats">
           <div class="hero-stat">
-            <div class="num">7 pÃÂ¤eva</div>
+            <div class="num">7 päeva</div>
             <div class="lbl">keskmine tehingu kiirus</div>
           </div>
           <div class="hero-stat">
-            <div class="num">0 Ã¢ÂÂ¬</div>
-            <div class="lbl">maakleritasu vÃÂµi teenustasu</div>
+            <div class="num">0 €</div>
+            <div class="lbl">maakleritasu või teenustasu</div>
           </div>
         </div>
         <ul class="hero-list">
-          <li><span class="check" aria-hidden="true">Ã¢ÂÂ</span> Korterid, majad ja kinnisvaraosad</li>
-          <li><span class="check" aria-hidden="true">Ã¢ÂÂ</span> Sobib ka hÃÂ¼poteegi vÃÂµi vÃÂµlgadega objekt</li>
-          <li><span class="check" aria-hidden="true">Ã¢ÂÂ</span> Renoveerimist ega koristamist pole vaja</li>
-          <li><span class="check" aria-hidden="true">Ã¢ÂÂ</span> Kogu protsess lÃÂ¤bipaistev ja notariaalne</li>
+          <li><span class="check" aria-hidden="true">✓</span> Korterid, majad ja kinnisvaraosad</li>
+          <li><span class="check" aria-hidden="true">✓</span> Sobib ka hüpoteegi või võlgadega objekt</li>
+          <li><span class="check" aria-hidden="true">✓</span> Renoveerimist ega koristamist pole vaja</li>
+          <li><span class="check" aria-hidden="true">✓</span> Kogu protsess läbipaistev ja notariaalne</li>
         </ul>
       </aside>
     </div>
@@ -881,20 +889,20 @@
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Miks meie</span>
-        <h2 id="vp-title">Selgus ja kiirus Ã¢ÂÂ ilma tÃÂ¼ÃÂ¼tute ÃÂ¼llatusteta</h2>
-        <p>Tavalisel mÃÂ¼ÃÂ¼gil vÃÂµib korteri mÃÂ¼ÃÂ¼mine venida kuudeks. Meie juures saate kirjaliku pakkumise kiiresti, tehingu ÃÂ¼he tooga ja raha otse kontole.</p>
+        <h2 id="vp-title">Selgus ja kiirus — ilma tüütute üllatusteta</h2>
+        <p>Tavalisel müügil võib korteri müümine venida kuudeks. Meie juures saate kirjaliku pakkumise kiiresti, tehingu ühe tooga ja raha otse kontole.</p>
       </div>
 
       <div class="cards">
         <article class="card">
           <div class="card-icon" aria-hidden="true">01</div>
           <h3>Kiire</h3>
-          <p>Kirjalik pakkumine 1Ã¢ÂÂ2 pÃÂ¤evaga pÃÂ¤rast ÃÂ¼levaatust, notariaalne tehing 7Ã¢ÂÂ14 pÃÂ¤evaga.</p>
+          <p>Kirjalik pakkumine 1–2 päevaga pärast ülevaatust, notariaalne tehing 7–14 päevaga.</p>
         </article>
         <article class="card">
           <div class="card-icon" aria-hidden="true">02</div>
           <h3>Sularaha</h3>
-          <p>Kogu summa kantakse kontole tehingu pÃÂ¤eval. Ei osamakseid ega kuupÃÂµhiseid graafikuid.</p>
+          <p>Kogu summa kantakse kontole tehingu päeval. Ei osamakseid ega kuupõhiseid graafikuid.</p>
         </article>
         <article class="card">
           <div class="card-icon" aria-hidden="true">03</div>
@@ -904,7 +912,7 @@
         <article class="card">
           <div class="card-icon" aria-hidden="true">04</div>
           <h3>Mis tahes seisukorras</h3>
-          <p>Vana, renoveerimata, asjadega tÃÂ¤idetud vÃÂµi kahjustatud Ã¢ÂÂ ostame nii, nagu on.</p>
+          <p>Vana, renoveerimata, asjadega täidetud või kahjustatud — ostame nii, nagu on.</p>
         </article>
       </div>
     </div>
@@ -915,29 +923,29 @@
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Protsess</span>
-        <h2 id="pr-title">Neli lihtsat sammu pÃÂ¤ringust tehinguni</h2>
-        <p>ÃÂkski samm ei kohusta teid midagi allkirjastama. Kui pakkumine ei sobi Ã¢ÂÂ te ei maksa midagi.</p>
+        <h2 id="pr-title">Neli lihtsat sammu päringust tehinguni</h2>
+        <p>Ükski samm ei kohusta teid midagi allkirjastama. Kui pakkumine ei sobi — te ei maksa midagi.</p>
       </div>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
-          <h3>PÃÂ¤ring</h3>
+          <h3>Päring</h3>
           <p>Sisestate aadressi ja saadate vormi. Piisab paarist reast objekti kohta.</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <h3>ÃÂlevaatus</h3>
-          <p>Helistame vaid aja kokkuleppimiseks ja tuleme objektiga tutvuma Ã¢ÂÂ Tallinnas vÃÂµi kogu Harjumaal.</p>
+          <h3>Ülevaatus</h3>
+          <p>Helistame vaid aja kokkuleppimiseks ja tuleme objektiga tutvuma — Tallinnas või kogu Harjumaal.</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <h3>Kirjalik pakkumine</h3>
-          <p>Teeme pakkumise ainult kirjalikult peale objekti ÃÂ¼levaatust. See on selge, lÃÂµplik ja kehtib kokkulepitud aja.</p>
+          <p>Teeme pakkumise ainult kirjalikult peale objekti ülevaatust. See on selge, lõplik ja kehtib kokkulepitud aja.</p>
         </div>
         <div class="step">
           <div class="step-num">4</div>
           <h3>Tehing</h3>
-          <p>Vormistame lepingu notari juures. Raha laekub teie kontole samal pÃÂ¤eval.</p>
+          <p>Vormistame lepingu notari juures. Raha laekub teie kontole samal päeval.</p>
         </div>
       </div>
     </div>
@@ -948,33 +956,33 @@
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Kellelt me ostame</span>
-        <h2 id="cs-title">Olukordi, kus kiire vÃÂ¤ljaost on parim lahendus</h2>
-        <p>Need on pÃÂµhjused, miks inimesed meie poole pÃÂ¶ÃÂ¶rduvad. Kui tunnete end mÃÂµnes neist ÃÂ¤ra, tasub meile kirjutada.</p>
+        <h2 id="cs-title">Olukordi, kus kiire väljaost on parim lahendus</h2>
+        <p>Need on põhjused, miks inimesed meie poole pöörduvad. Kui tunnete end mõnes neist ära, tasub meile kirjutada.</p>
       </div>
       <div class="cases">
         <article class="case">
-          <h3>PÃÂ¤ritud kinnisvara</h3>
-          <p>Sai pÃÂ¤randina korter vÃÂµi maja, mille korraldamiseks pole aega ega soovi. Aitame dokumentide ja jaotamisega.</p>
+          <h3>Päritud kinnisvara</h3>
+          <p>Sai pärandina korter või maja, mille korraldamiseks pole aega ega soovi. Aitame dokumentide ja jaotamisega.</p>
         </article>
         <article class="case">
           <h3>Kiire rahavajadus</h3>
-          <p>Vajate raha ootamatu kulu, tervise, ÃÂ¤ri vÃÂµi muu pakilise olukorra pÃÂ¤rast. Pakume lahenduse nÃÂ¤dala jooksul.</p>
+          <p>Vajate raha ootamatu kulu, tervise, äri või muu pakilise olukorra pärast. Pakume lahenduse nädala jooksul.</p>
         </article>
         <article class="case">
-          <h3>HÃÂ¼poteek vÃÂµi vÃÂµlgnevused</h3>
-          <p>Objektil on pangalaen, kommunaalvÃÂµlad vÃÂµi muud koormatised. Korraldame selle tehingu kÃÂ¤igus ÃÂ¤ra.</p>
+          <h3>Hüpoteek või võlgnevused</h3>
+          <p>Objektil on pangalaen, kommunaalvõlad või muud koormatised. Korraldame selle tehingu käigus ära.</p>
         </article>
         <article class="case">
-          <h3>Kolimine vÃÂ¤lismaale</h3>
-          <p>Emigreerute vÃÂµi olete juba vÃÂ¤lismaal ning soovite kinnisvara kiirelt maha mÃÂ¼ÃÂ¼a, ilma Eestisse tagasi sÃÂµitmata.</p>
+          <h3>Kolimine välismaale</h3>
+          <p>Emigreerute või olete juba välismaal ning soovite kinnisvara kiirelt maha müüa, ilma Eestisse tagasi sõitmata.</p>
         </article>
         <article class="case">
-          <h3>Probleemne vÃÂµi vana korter</h3>
-          <p>Halvas seisus, vajab kapitaalremonti, asjadega tÃÂ¤idetud, lagunenud kÃÂ¶ÃÂ¶k vÃÂµi vannituba Ã¢ÂÂ ostame nii, nagu on.</p>
+          <h3>Probleemne või vana korter</h3>
+          <p>Halvas seisus, vajab kapitaalremonti, asjadega täidetud, lagunenud köök või vannituba — ostame nii, nagu on.</p>
         </article>
         <article class="case">
-          <h3>VÃÂ¤sinud tavamÃÂ¼ÃÂ¼gist</h3>
-          <p>Objekt on juba kuid turul seisnud, nÃÂ¤itamised vÃÂ¤sitavad, hind on kÃÂµikunud. Paku meile ja saa selgus kiiresti.</p>
+          <h3>Väsinud tavamüügist</h3>
+          <p>Objekt on juba kuid turul seisnud, näitamised väsitavad, hind on kõikunud. Paku meile ja saa selgus kiiresti.</p>
         </article>
       </div>
     </div>
@@ -984,81 +992,81 @@
   <section id="kysimused" class="alt" aria-labelledby="faq-title">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Korduma kippuvad kÃÂ¼simused</span>
-        <h2 id="faq-title">Vastused kÃÂµige sagedasematele kÃÂ¼simustele</h2>
-        <p>Ei leidnud vastust? Kirjutage meile, selgitame hea meelega pÃÂµhjalikumalt.</p>
+        <span class="eyebrow">Korduma kippuvad küsimused</span>
+        <h2 id="faq-title">Vastused kõige sagedasematele küsimustele</h2>
+        <p>Ei leidnud vastust? Kirjutage meile, selgitame hea meelega põhjalikumalt.</p>
       </div>
       <div class="faq-list">
         <details class="faq-item">
-          <summary>Kas te vÃÂµtate vahendustasu?</summary>
+          <summary>Kas te võtate vahendustasu?</summary>
           <div class="faq-body">
-            <p>Ei. Me ei ole maaklerid Ã¢ÂÂ me ise ostame teilt kinnisvara vÃÂ¤lja. Teilt ei vÃÂµeta vahendus- ega teenustasu. Pakkumises kirjas olev summa on ka see, mis teie kontole jÃÂµuab.</p>
+            <p>Ei. Me ei ole maaklerid — me ise ostame teilt kinnisvara välja. Teilt ei võeta vahendus- ega teenustasu. Pakkumises kirjas olev summa on ka see, mis teie kontole jõuab.</p>
           </div>
         </details>
         <details class="faq-item">
-          <summary>Kui kiiresti saate korteri vÃÂ¤lja osta?</summary>
+          <summary>Kui kiiresti saate korteri välja osta?</summary>
           <div class="faq-body">
-            <p>Tavaliselt sÃÂµlmime notariaalse tehingu 7Ã¢ÂÂ14 pÃÂ¤eva jooksul pÃÂ¤rast ÃÂ¼levaatust. Kui olukord nÃÂµuab kiirust, suudame sageli tegutseda ka kiiremini.</p>
+            <p>Tavaliselt sõlmime notariaalse tehingu 7–14 päeva jooksul pärast ülevaatust. Kui olukord nõuab kiirust, suudame sageli tegutseda ka kiiremini.</p>
           </div>
         </details>
         <details class="faq-item">
           <summary>Millises seisukorras korterit te ostate?</summary>
           <div class="faq-body">
-            <p>Ostame objekti vÃÂ¤lja mis tahes seisukorras Ã¢ÂÂ renoveerimata, vana, kahjustustega vÃÂµi asjadega tÃÂ¤idetud. Teil pole vaja midagi koristada ega remontida. Teeme objekti ÃÂ¼levaatuse ja arvestame seisukorraga juba pakkumises.</p>
+            <p>Ostame objekti välja mis tahes seisukorras — renoveerimata, vana, kahjustustega või asjadega täidetud. Teil pole vaja midagi koristada ega remontida. Teeme objekti ülevaatuse ja arvestame seisukorraga juba pakkumises.</p>
           </div>
         </details>
         <details class="faq-item">
           <summary>Kas teie pakkumises on peidetud tingimusi?</summary>
           <div class="faq-body">
-            <p>Ei. Pakkumine esitatakse ainult kirjalikult ja on lÃÂµplik. KÃÂµik tingimused on selgelt sÃÂµnastatud ning tehing vormistatakse notari juures. Te ei avasta midagi ootamatut allkirja hetkel.</p>
+            <p>Ei. Pakkumine esitatakse ainult kirjalikult ja on lõplik. Kõik tingimused on selgelt sõnastatud ning tehing vormistatakse notari juures. Te ei avasta midagi ootamatut allkirja hetkel.</p>
           </div>
         </details>
         <details class="faq-item">
-          <summary>Mis saab, kui korteril on hÃÂ¼poteek vÃÂµi vÃÂµlgnevused?</summary>
+          <summary>Mis saab, kui korteril on hüpoteek või võlgnevused?</summary>
           <div class="faq-body">
-            <p>HÃÂ¼poteegid, kommunaalvÃÂµlad, ÃÂ¼histu vÃÂµlgnevused ja muud koormatised saab tehingu kÃÂ¤igus korraldada. See on meie igapÃÂ¤evane tÃÂ¶ÃÂ¶ ja me aitame kogu paberimajanduse korda saada.</p>
+            <p>Hüpoteegid, kommunaalvõlad, ühistu võlgnevused ja muud koormatised saab tehingu käigus korraldada. See on meie igapäevane töö ja me aitame kogu paberimajanduse korda saada.</p>
           </div>
         </details>
         <details class="faq-item">
           <summary>Kas tehing on seaduslik ja turvaline?</summary>
           <div class="faq-body">
-            <p>Jah. Iga tehing sÃÂµlmitakse Eesti notari juures vastavalt kehtivale seadusandlusele. Teie ÃÂµigused on kaitstud kogu protsessi vÃÂ¤ltel Ã¢ÂÂ notar kontrollib lepingu ja omandiÃÂµiguse ÃÂ¼leminek toimub ametliku korra jÃÂ¤rgi.</p>
+            <p>Jah. Iga tehing sõlmitakse Eesti notari juures vastavalt kehtivale seadusandlusele. Teie õigused on kaitstud kogu protsessi vältel — notar kontrollib lepingu ja omandiõiguse üleminek toimub ametliku korra järgi.</p>
           </div>
         </details>
         <details class="faq-item">
           <summary>Kas teete pakkumise telefoni teel?</summary>
           <div class="faq-body">
-            <p>Ei. Hinnapakkumist me telefoni teel ei tee. Pakkumine esitatakse alati kirjalikult pÃÂ¤rast objekti ÃÂ¼levaatust Ã¢ÂÂ nii on tingimused ÃÂ¼hetaoliselt mÃÂµistetavad mÃÂµlemale poolele. Telefon ja e-post on mÃÂµeldud vaid ÃÂ¼levaatuse aja kokkuleppimiseks.</p>
+            <p>Ei. Hinnapakkumist me telefoni teel ei tee. Pakkumine esitatakse alati kirjalikult pärast objekti ülevaatust — nii on tingimused ühetaoliselt mõistetavad mõlemale poolele. Telefon ja e-post on mõeldud vaid ülevaatuse aja kokkuleppimiseks.</p>
           </div>
         </details>
         <details class="faq-item">
           <summary>Kes katab notaritasud ja muud kulud?</summary>
           <div class="faq-body">
-            <p>Notaritasu katame meie, kui ei lepita kokku teisiti. Teil ei teki tehingust tÃÂ¤iendavaid kulusid Ã¢ÂÂ kogu pakkumisse mÃÂ¤rgitud summa jÃÂµuab teie kontole.</p>
+            <p>Notaritasu katame meie, kui ei lepita kokku teisiti. Teil ei teki tehingust täiendavaid kulusid — kogu pakkumisse märgitud summa jõuab teie kontole.</p>
           </div>
         </details>
         <details class="faq-item">
-          <summary>Kui kiiresti saab raha pÃÂ¤rast ÃÂ¼levaatust?</summary>
+          <summary>Kui kiiresti saab raha pärast ülevaatust?</summary>
           <div class="faq-body">
-            <p>Kui pakkumine sobib, vormistame notariaalse lepingu tavaliselt 7Ã¢ÂÂ14 pÃÂ¤eva jooksul. Raha kantakse teie kontole tehingu pÃÂ¤eval Ã¢ÂÂ mitte osamaksetena hiljem.</p>
+            <p>Kui pakkumine sobib, vormistame notariaalse lepingu tavaliselt 7–14 päeva jooksul. Raha kantakse teie kontole tehingu päeval — mitte osamaksetena hiljem.</p>
           </div>
         </details>
         <details class="faq-item">
-          <summary>Kas saab mÃÂ¼ÃÂ¼a, kui objektil on ÃÂ¼ÃÂ¼rnikud?</summary>
+          <summary>Kas saab müüa, kui objektil on üürnikud?</summary>
           <div class="faq-body">
-            <p>Jah. Arvestame ÃÂ¼ÃÂ¼rilepinguga pakkumise tegemisel ning lepime ÃÂ¼ksikasjad kokku enne tehingut. MÃÂµnel juhul jÃÂ¤ÃÂ¤b ÃÂ¼ÃÂ¼rileping kehtima, mÃÂµnel juhul lÃÂµpetatakse see vastastikusel kokkuleppel.</p>
+            <p>Jah. Arvestame üürilepinguga pakkumise tegemisel ning lepime üksikasjad kokku enne tehingut. Mõnel juhul jääb üürileping kehtima, mõnel juhul lõpetatakse see vastastikusel kokkuleppel.</p>
           </div>
         </details>
         <details class="faq-item">
-          <summary>Mis siis, kui objektil on mitu kaaspÃÂ¤rijat vÃÂµi kaasomanikku?</summary>
+          <summary>Mis siis, kui objektil on mitu kaaspärijat või kaasomanikku?</summary>
           <div class="faq-body">
-            <p>TÃÂ¶ÃÂ¶tame regulaarselt olukordades, kus osapooli on mitu. Tehingu tegemiseks on vaja kÃÂµigi kaasomanike vÃÂµi pÃÂ¤rijate nÃÂµusolekut Ã¢ÂÂ aitame vajalike dokumentide ja nÃÂµusolekute kogumisel.</p>
+            <p>Töötame regulaarselt olukordades, kus osapooli on mitu. Tehingu tegemiseks on vaja kõigi kaasomanike või pärijate nõusolekut — aitame vajalike dokumentide ja nõusolekute kogumisel.</p>
           </div>
         </details>
         <details class="faq-item">
           <summary>Millised dokumendid on tehinguks vajalikud?</summary>
           <div class="faq-body">
-            <p>ÃÂldjuhul lÃÂ¤heb vaja isikut tÃÂµendavat dokumenti, omandiÃÂµigust tÃÂµendavat paberit ning ÃÂ¼histu tÃÂµendit vÃÂµlgnevuste kohta. PÃÂ¤randvara korral lisandub pÃÂ¤rimistunnistus. TÃÂ¤pse nimekirja saadame teile pÃÂ¤rast pÃÂ¤ringut.</p>
+            <p>Üldjuhul läheb vaja isikut tõendavat dokumenti, omandiõigust tõendavat paberit ning ühistu tõendit võlgnevuste kohta. Pärandvara korral lisandub pärimistunnistus. Täpse nimekirja saadame teile pärast päringut.</p>
           </div>
         </details>
       </div>
@@ -1070,9 +1078,9 @@
     <div class="container">
       <div class="contact-grid">
         <div class="contact-info">
-          <span class="eyebrow">VÃÂµtke ÃÂ¼hendust</span>
-          <h2 id="ct-title">Saada pÃÂ¤ring Ã¢ÂÂ vastame tundide jooksul</h2>
-          <p>Sisestage aadress ja mÃÂµned ÃÂ¼ksikasjad. Teeme pakkumise ainult kirjalikult pÃÂ¤rast objekti ÃÂ¼levaatust.</p>
+          <span class="eyebrow">Võtke ühendust</span>
+          <h2 id="ct-title">Saada päring — vastame tundide jooksul</h2>
+          <p>Sisestage aadress ja mõned üksikasjad. Teeme pakkumise ainult kirjalikult pärast objekti ülevaatust.</p>
           <div class="line"><span class="label">Telefon</span><a href="tel:+372XXXXXXX">+372 XXX XXXX</a></div>
           <div class="line"><span class="label">E-post</span><a href="mailto:info@example.ee">info@example.ee</a></div>
           <div class="line"><span class="label">Piirkond</span><span>Tallinn ja kogu Harjumaa</span></div>
@@ -1080,9 +1088,9 @@
         </div>
 
         <div class="inline-form-cta">
-          <h3>Alusta pÃÂ¤ringuga</h3>
-          <p>Sisesta aadress ja vajuta "JÃÂ¤tka". SeejÃÂ¤rel tÃÂ¤ida lÃÂ¼hike vorm Ã¢ÂÂ see vÃÂµtab mÃÂµne minuti.</p>
-          <button type="button" class="btn" id="openModalBtn">Alusta pÃÂ¤ringut</button>
+          <h3>Alusta päringuga</h3>
+          <p>Sisesta aadress ja vajuta "Jätka". Seejärel täida lühike vorm — see võtab mõne minuti.</p>
+          <button type="button" class="btn" id="openModalBtn">Alusta päringut</button>
         </div>
       </div>
     </div>
@@ -1102,18 +1110,18 @@
     tabindex="-1"
   >
     <div class="modal-header">
-      <h2 id="modalTitle">Saada pÃÂ¤ring</h2>
-      <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Sulge">ÃÂ</button>
+      <h2 id="modalTitle">Saada päring</h2>
+      <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Sulge">×</button>
     </div>
     <p class="modal-intro" id="modalIntro">
-      TÃÂ¤ida vorm, vÃÂµtame ÃÂ¼hendust ÃÂ¼levaatuse aja kokkuleppimiseks. Pakkumine esitatakse ainult kirjalikult pÃÂ¤rast objekti ÃÂ¼levaatust.
+      Täida vorm, võtame ühendust ülevaatuse aja kokkuleppimiseks. Pakkumine esitatakse ainult kirjalikult pärast objekti ülevaatust.
     </p>
 
     <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
 
     <!--
       Form posts to /api/submit (Cloudflare Pages Function).
-      TODO: wire backend Ã¢ÂÂ functions/api/submit.js (Resend) is being finalised separately.
+      TODO: wire backend — functions/api/submit.js (Resend) is being finalised separately.
       Until the backend is deployed, the POST will 404 and the error branch below will render.
     -->
     <form class="form" id="leadForm" action="/api/submit" method="POST" enctype="multipart/form-data" novalidate>
@@ -1146,18 +1154,18 @@
         <input type="hidden" id="house" name="house" />
         <input type="hidden" id="apartment" name="apartment" />
         <input type="hidden" id="aadress_full" name="aadress_full" />
-        <span class="field-error" data-for="aadress">Palun sisesta tÃÂ¤ielik aadress Ã¢ÂÂ tÃÂ¤nav, majanumber ja linn.</span>
+        <span class="field-error" data-for="aadress">Palun sisesta täielik aadress — tänav, majanumber ja linn.</span>
       </div>
 
       <div class="field">
-        <label for="tyyp">Objekti tÃÂ¼ÃÂ¼p</label>
+        <label for="tyyp">Objekti tüüp</label>
         <select id="tyyp" name="tyyp" required>
-          <option value="">ValiÃ¢ÂÂ¦</option>
+          <option value="">Vali…</option>
           <option value="korter">Korter</option>
           <option value="maja">Maja</option>
           <option value="muu">Muu</option>
         </select>
-        <span class="field-error" data-for="tyyp">Palun vali objekti tÃÂ¼ÃÂ¼p.</span>
+        <span class="field-error" data-for="tyyp">Palun vali objekti tüüp.</span>
       </div>
 
       <!-- Floor fields: shown only for korter -->
@@ -1172,19 +1180,54 @@
             <span>Viimane korrus</span>
           </label>
         </div>
-        <span class="hint" style="display:block;margin-top:6px;">Kui viimane korrus on mÃÂ¤rgitud, korruse numbrit ei pea sisestama.</span>
+        <span class="hint" style="display:block;margin-top:6px;">Kui viimane korrus on märgitud, korruse numbrit ei pea sisestama.</span>
+      </div>
+
+      <div class="korter-only" id="korterExtras" aria-live="polite">
+        <div class="field">
+          <label>Korteri seisukord</label>
+          <div class="segmented">
+            <label>
+              <input type="radio" name="seisukord" value="vajab_remonti" />
+              <span>Vajab remonti</span>
+            </label>
+            <label>
+              <input type="radio" name="seisukord" value="renoveeritud" />
+              <span>Renoveeritud</span>
+            </label>
+            <label>
+              <input type="radio" name="seisukord" value="uusarendus" />
+              <span>Uusarendus</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Korteri asukoht majas</label>
+          <div class="segmented">
+            <label>
+              <input type="radio" name="asukoht_majas" value="otsakorter" />
+              <span>Otsakorter</span>
+            </label>
+            <label>
+              <input type="radio" name="asukoht_majas" value="keskmine" />
+              <span>Keskmine korter</span>
+            </label>
+          </div>
+          <span class="hint">Mõjutab hinnapakkumist</span>
+        </div>
       </div>
 
       <div class="field">
         <label for="kuulutusLink">Link olemasolevale kuulutusele (kui on)</label>
-        <input type="url" id="kuulutusLink" name="kuulutus_link" placeholder="https://Ã¢ÂÂ¦" autocomplete="url" />
-        <span class="hint">Valikuline. NÃÂ¤iteks kv.ee, city24.ee vÃÂµi muu portaal.</span>
+        <input type="url" id="kuulutusLink" name="kuulutus_link" placeholder="https://…" autocomplete="url" />
+        <span class="hint">Valikuline. Näiteks kv.ee, city24.ee või muu portaal.</span>
       </div>
 
       <div class="field">
         <label for="failid">Lisa fotod objektist (valikuline)</label>
         <input type="file" id="failid" name="failid" multiple accept="image/*,.pdf" />
-        <span class="hint">JPG, PNG vÃÂµi PDF. Kuni ~20 MB kokku.</span>
+        <span class="hint">JPG, PNG või PDF. Kuni ~20 MB kokku.</span>
       </div>
 
       <div class="field">
@@ -1195,20 +1238,20 @@
       <div class="field">
         <label class="checkbox" for="turuhinnast">
           <input type="checkbox" id="turuhinnast" name="turuhinnast_madalam" value="jah" required />
-          <span>NÃÂµustun mÃÂ¼ÃÂ¼ma kiiresti turuhinnast madalama hinnaga.</span>
+          <span>Nõustun müüma kiiresti turuhinnast madalama hinnaga.</span>
         </label>
-        <span class="field-error" data-for="turuhinnast">Kiire vÃÂ¤ljaost tÃÂ¤hendab, et pakkumine on turuhinnast madalam. Palun kinnita selle tingimusega nÃÂµustumine.</span>
+        <span class="field-error" data-for="turuhinnast">Kiire väljaost tähendab, et pakkumine on turuhinnast madalam. Palun kinnita selle tingimusega nõustumine.</span>
       </div>
 
       <div class="field">
         <label class="checkbox" for="noustumine">
           <input type="checkbox" id="noustumine" name="noustumine" required />
-          <span>Annan nÃÂµusoleku oma isikuandmete tÃÂ¶ÃÂ¶tlemiseks pakkumise tegemise eesmÃÂ¤rgil vastavalt isikuandmete kaitse ÃÂ¼ldmÃÂ¤ÃÂ¤rusele (GDPR). Andmeid ei edastata kolmandatele isikutele.</span>
+          <span>Annan nõusoleku oma isikuandmete töötlemiseks pakkumise tegemise eesmärgil vastavalt isikuandmete kaitse üldmäärusele (GDPR). Andmeid ei edastata kolmandatele isikutele.</span>
         </label>
-        <span class="field-error" data-for="noustumine">Palun kinnita isikuandmete tÃÂ¶ÃÂ¶tlemise nÃÂµusolek.</span>
+        <span class="field-error" data-for="noustumine">Palun kinnita isikuandmete töötlemise nõusolek.</span>
       </div>
 
-      <button type="submit" class="btn" id="submitBtn">Saada pÃÂ¤ring</button>
+      <button type="submit" class="btn" id="submitBtn">Saada päring</button>
     </form>
   </div>
 </div>
@@ -1219,7 +1262,7 @@
     <div class="foot-grid">
       <div>
         <span class="foot-brand">[FIRMA NIMI]</span>
-        <p>Kiire ja aus kinnisvara vÃÂ¤ljaost Tallinnas ja kogu Harjumaal. Ostame korterid ja majad sularahas, mis tahes seisukorras Ã¢ÂÂ ilma vahendustasudeta. Pakkumine esitatakse ainult kirjalikult.</p>
+        <p>Kiire ja aus kinnisvara väljaost Tallinnas ja kogu Harjumaal. Ostame korterid ja majad sularahas, mis tahes seisukorras — ilma vahendustasudeta. Pakkumine esitatakse ainult kirjalikult.</p>
       </div>
       <div>
         <h4>Kontakt</h4>
@@ -1231,12 +1274,12 @@
       </div>
       <div>
         <h4>Teenuspiirkond</h4>
-        <p>Tallinn, Maardu, Viimsi, Harku, Saue, Saku, Rae, JÃÂµelÃÂ¤htme, Keila ja kogu ÃÂ¼lejÃÂ¤ÃÂ¤nud Harjumaa.</p>
+        <p>Tallinn, Maardu, Viimsi, Harku, Saue, Saku, Rae, Jõelähtme, Keila ja kogu ülejäänud Harjumaa.</p>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>ÃÂ© <span id="year"></span> [FIRMA NIMI]. KÃÂµik ÃÂµigused kaitstud.</span>
-      <span>Andmekaitse ÃÂ· Tingimused</span>
+      <span>© <span id="year"></span> [FIRMA NIMI]. Kõik õigused kaitstud.</span>
+      <span>Andmekaitse · Tingimused</span>
     </div>
   </div>
 </footer>
@@ -1360,28 +1403,24 @@
   var korrusInput = document.getElementById('korrus');
   var viimaneKorrus = document.getElementById('viimaneKorrus');
 
+  var korterExtras = document.getElementById('korterExtras');
+
   function toggleFloorFields() {
     if (tyypSelect.value === 'korter') {
       floorWrap.classList.add('visible');
+      if (korterExtras) korterExtras.classList.add('visible');
     } else {
       floorWrap.classList.remove('visible');
+      if (korterExtras) korterExtras.classList.remove('visible');
       korrusInput.value = '';
       viimaneKorrus.checked = false;
       korrusInput.disabled = false;
-    }
-  }
-
-  function toggleKorrusDisabled() {
-    if (viimaneKorrus.checked) {
-      korrusInput.disabled = true;
-      korrusInput.value = '';
-    } else {
-      korrusInput.disabled = false;
+      var korterRadios = document.querySelectorAll('input[name="seisukord"], input[name="asukoht_majas"]');
+      for (var i = 0; i < korterRadios.length; i++) korterRadios[i].checked = false;
     }
   }
 
   tyypSelect.addEventListener('change', toggleFloorFields);
-  viimaneKorrus.addEventListener('change', toggleKorrusDisabled);
 
   /* ================= Lead form validation + submit ================= */
   var leadForm = document.getElementById('leadForm');
@@ -1455,7 +1494,7 @@
 
     submitBtn.disabled = true;
     var originalLabel = submitBtn.textContent;
-    submitBtn.textContent = 'SaadanÃ¢ÂÂ¦';
+    submitBtn.textContent = 'Saadan…';
 
     var data = new FormData(leadForm);
     // If last-floor is checked, ensure floor number is not sent (defensive)
@@ -1472,13 +1511,13 @@
         toggleKorrusDisabled();
         setStatus(
           'success',
-          'AitÃÂ¤h! Teie pÃÂ¤ring on saadetud. VÃÂµtame teiega ÃÂ¼hendust ÃÂ¼levaatuse aja kokkuleppimiseks. Pakkumise esitame kirjalikult pÃÂ¤rast ÃÂ¼levaatust.'
+          'Aitäh! Teie päring on saadetud. Võtame teiega ühendust ülevaatuse aja kokkuleppimiseks. Pakkumise esitame kirjalikult pärast ülevaatust.'
         );
       })
       .catch(function () {
         setStatus(
           'error',
-          'PÃÂ¤ringu saatmine ebaÃÂµnnestus. Palun proovige uuesti vÃÂµi kirjutage info@example.ee.'
+          'Päringu saatmine ebaõnnestus. Palun proovige uuesti või kirjutage info@example.ee.'
         );
       })
       .finally(function () {
@@ -1496,37 +1535,10 @@
     var debounceT, currentItems = [], activeIdx = -1, selected = null;
 
     function fetchSuggest(q, cb) {
-      var url = INADS + '?address=' + encodeURIComponent(q) + '&appartment=2&features=EHITISHOONE&unik=1&results=25&iTappAsendus=1';
+      var url = INADS + '?address=' + encodeURIComponent(q) + '&results=10&appartment=1&unik=1';
       fetch(url, { headers: { 'Accept': 'application/json' } })
-        .then(function (r) { if (!r.ok) return { addresses: [] }; return r.json(); })
-        .then(function (d) {
-          var raw = (d && d.addresses) || [];
-          var expanded = [];
-          for (var ei = 0; ei < raw.length; ei++) {
-            var a = raw[ei];
-            var aps = a && a.appartments;
-            if (aps && aps.length) {
-              for (var ej = 0; ej < aps.length; ej++) {
-                var ap = aps[ej];
-                var tahis = ap && ap.tahis ? ap.tahis : '';
-                var flat = {};
-                for (var k in a) { if (Object.prototype.hasOwnProperty.call(a, k)) flat[k] = a[k]; }
-                flat.kort_nr = tahis;
-                flat.adr_id = (ap && ap.adr_id) ? ap.adr_id : flat.adr_id;
-                flat.ads_oid = (ap && ap.ads_oid) ? ap.ads_oid : flat.ads_oid;
-                flat.aadresstekst = (a.aadresstekst || '') + (tahis ? '-' + tahis : '');
-                flat.pikkaadress = (a.pikkaadress || '') + (tahis ? '-' + tahis : '');
-                var tail = [a.sihtnumber, a.omavalitsus, a.maakond].filter(function (x) { return !!x; }).join(', ');
-                flat.ipikkaadress = flat.aadresstekst + (tail ? ', ' + tail : '');
-                flat.appartments = null;
-                expanded.push(flat);
-              }
-            } else {
-              expanded.push(a);
-            }
-          }
-          cb(expanded);
-        })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { cb((d && d.addresses) || []); })
         .catch(function () {
           var cbName = '__inads_cb_' + Date.now() + '_' + Math.floor(Math.random() * 1e6);
           window[cbName] = function (d) {
@@ -1554,7 +1566,7 @@
     }
 
     function render(items) {
-      currentItems = (items || []).slice(0, 10);
+      currentItems = items || [];
       activeIdx = -1;
       list.innerHTML = '';
       if (!currentItems.length) { closeList(); return; }
@@ -1575,7 +1587,7 @@
       var q = input.value.trim();
       selected = null;
       clearTimeout(debounceT);
-      if (q.length < 2) { closeList(); return; }
+      if (q.length < 3) { closeList(); return; }
       debounceT = setTimeout(function () { fetchSuggest(q, render); }, 200);
     });
 
