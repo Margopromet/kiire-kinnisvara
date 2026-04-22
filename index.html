@@ -1495,7 +1495,7 @@
     var debounceT, currentItems = [], activeIdx = -1, selected = null;
 
     function fetchSuggest(q, cb) {
-      var url = INADS + '?address=' + encodeURIComponent(q) + '&results=10&appartment=1&unik=1&features=1';
+      var url = INADS + '?address=' + encodeURIComponent(q) + '&results=10&appartment=1&unik=1';
       fetch(url, { headers: { 'Accept': 'application/json' } })
         .then(function (r) { return r.json(); })
         .then(function (d) { cb((d && d.addresses) || []); })
