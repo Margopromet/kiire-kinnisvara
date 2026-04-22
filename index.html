@@ -1538,20 +1538,64 @@
     if (!input || !list) return;
     var debounceT, currentItems = [], activeIdx = -1, selected = null;
 
+    function expandInadsRows(addrs, q) {
+      var addrList = addrs || [];
+      var hasNumber = /\d/.test(q || "");
+      if (!hasNumber) return addrList.slice(0, 10);
+      var out = [];
+      addrList.forEach(function (a) {
+        out.push(a);
+        if (Array.isArray(a.appartments)) {
+          a.appartments.forEach(function (ap) {
+            var tahis = ap.tahis || "";
+            var base = a.aadresstekst || "";
+            function splice(src) {
+              if (!src) return base + "-" + tahis;
+              var i = src.indexOf(base);
+              if (i < 0) return src + "-" + tahis;
+              return src.substring(0, i + base.length) + "-" + tahis + src.substring(i + base.length);
+            }
+            out.push({
+              adr_id: ap.adr_id || a.adr_id,
+              ads_oid: ap.ads_oid || a.ads_oid,
+              ehak: a.ehak, sihtnumber: a.sihtnumber,
+              liikluspind: a.liikluspind, aadress_nr: a.aadress_nr,
+              kort_nr: tahis,
+              aadresstekst: base + "-" + tahis,
+              pikkaadress: splice(a.pikkaadress),
+              ipikkaadress: splice(a.ipikkaadress),
+              taisaadress: splice(a.taisaadress)
+            });
+          });
+        }
+      });
+      return out.slice(0, 10);
+    }
+
     function fetchSuggest(q, cb) {
-      var url = INADS + '?address=' + encodeURIComponent(q) + '&results=10&appartment=1&unik=1';
-      fetch(url, { headers: { 'Accept': 'application/json' } })
-        .then(function (r) { return r.json(); })
-        .then(function (d) { cb((d && d.addresses) || []); })
-        .catch(function () {
-          var cbName = '__inads_cb_' + Date.now() + '_' + Math.floor(Math.random() * 1e6);
-          window[cbName] = function (d) {
-            try { cb((d && d.addresses) || []); } finally { try { delete window[cbName]; s.parentNode.removeChild(s); } catch (_) {} }
-          };
-          var s = document.createElement('script');
-          s.src = url + '&callback=' + cbName;
-          document.head.appendChild(s);
-        });
+      var base = INADS + "?address=" + encodeURIComponent(q) + "&results=25&appartment=2&unik=1&iTappAsendus=1";
+      var primary = base + "&features=EHITISHOONE";
+      function handle(d, isFallback) {
+        var addrs = (d && d.addresses) || [];
+        if (!addrs.length && !isFallback) { doFetch(base, true); return; }
+        cb(expandInadsRows(addrs, q));
+      }
+      function jsonp(u, isFallback) {
+        var cbName = "__inads_cb_" + Date.now() + "_" + Math.floor(Math.random() * 1e6);
+        window[cbName] = function (d) {
+          try { handle(d, isFallback); } finally { try { delete window[cbName]; s.parentNode.removeChild(s); } catch (_) {} }
+        };
+        var s = document.createElement("script");
+        s.src = u + "&callback=" + cbName;
+        document.head.appendChild(s);
+      }
+      function doFetch(u, isFallback) {
+        fetch(u, { headers: { "Accept": "application/json" } })
+          .then(function (r) { return r.json(); })
+          .then(function (d) { handle(d, isFallback); })
+          .catch(function () { jsonp(u, isFallback); });
+      }
+      doFetch(primary, false);
     }
 
     function openList() { list.classList.add('open'); input.setAttribute('aria-expanded', 'true'); }
