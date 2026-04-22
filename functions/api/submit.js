@@ -54,10 +54,10 @@ export async function onRequest(context) {
   const asukohtMajas = get('asukoht_majas');
 
   // Required fields
-  if (!nimi || !telefon || !noustumine) {
+  if (!nimi || !telefon || !noustumine || !turuhinnast_madalam) {
     return json({
       ok: false,
-      error: 'Palun täida nõutud väljad: nimi, telefon ja nõusolek andmete töötlemiseks.',
+      error: 'Palun täida nõutud väljad: nimi, telefon, nõusolek andmete töötlemiseks ning nõusolek turuhinnast madalama hinnaga müügiks.',
     }, 400);
   }
 
