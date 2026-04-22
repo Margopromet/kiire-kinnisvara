@@ -1224,10 +1224,11 @@
   /* ================= Address validation ================= */
   function isLikelyAddress(value) {
     var v = (value || '').trim();
-    if (v.length < 5) return false;
-    // Contains at least one digit OR a space + street-ish token (2+ letter words separated by space)
-    if (/\d/.test(v)) return true;
-    if (/\S+\s+\S+/.test(v) && /[A-Za-zÄÖÜÕŠŽäöüõšž]{2,}/.test(v)) return true;
+    var nonWs = v.replace(/\s+/g, '');
+    if (nonWs.length < 4) return false;
+    if (/^\d+$/.test(nonWs)) return false;
+    return true;
+  }/.test(v)) return true;
     return false;
   }
 
