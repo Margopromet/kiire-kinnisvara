@@ -35,6 +35,13 @@ export async function onRequest(context) {
   const telefon = get('telefon');
   const email = get('email');
   const aadress = get('aadress');
+  const aadressFull = get('aadress_full');
+  const adrid = get('adrid');
+  const ehak = get('ehak');
+  const zip = get('zip');
+  const street = get('street');
+  const house = get('house');
+  const apartment = get('apartment');
   // Form uses `tyyp` (select) and `objekt_tyyp` as a legacy fallback.
   const objektTyyp = get('tyyp') || get('objekt_tyyp');
   const kuulutusLink = get('kuulutus_link');
@@ -81,6 +88,7 @@ export async function onRequest(context) {
     nimi, telefon, email, aadress, objektTyyp,
     kuulutusLink, korrus, viimaneKorrus, turuhinnastMadalam,
     kommentaar, noustumine,
+    aadressFull, adrid, ehak, zip, street, house, apartment,
     attachmentsCount: attachments.length,
   });
 
@@ -148,6 +156,13 @@ function buildHtml(d) {
     ${row('Telefon', d.telefon)}
     ${row('E-post', d.email)}
     ${row('Aadress', d.aadress)}
+        ${row('Aadress (täistekst In-ADS)', d.aadressFull)}
+        ${row('ADRID', d.adrid)}
+        ${row('EHAK', d.ehak)}
+        ${row('Sihtnumber', d.zip)}
+        ${row('Tänav', d.street)}
+        ${row('Majanumber', d.house)}
+        ${row('Korteri nr', d.apartment)}
     ${row('Objekti tüüp', d.objektTyyp)}
     ${row('Kuulutuse link', d.kuulutusLink)}
     ${korterOnly ? row('Korrus', d.korrus) : ''}
