@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ostame korterid ja majad kiiresti Tallinnas ja Harjumaal | [FIRMA NIMI]</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>Ostame korterid ja majad kiiresti Tallinnas ja Harjumaal | Kinnisvara Kiire Ost</title>
   <meta name="description" content="Müüge oma korter või maja kiirelt. Ostame kinnisvara välja sularahas 7 päevaga Tallinnas ja Harjumaal. Ilma maakleritasudeta, mis tahes seisukorras. Pakkumine kirjalikult." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://example.ee/" />
@@ -14,7 +15,7 @@
   <meta property="og:title" content="Ostame korterid ja majad kiiresti Tallinnas ja Harjumaal" />
   <meta property="og:description" content="Kiire ja aus kinnisvara väljaost Tallinnas ja Harjumaal. Sularaha 7 päevaga, mis tahes seisukorras. Pakkumine ainult kirjalikult." />
   <meta property="og:url" content="https://example.ee/" />
-  <meta property="og:site_name" content="[FIRMA NIMI]" />
+  <meta property="og:site_name" content="Kinnisvara Kiire Ost" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -674,15 +675,19 @@
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "[FIRMA NIMI]",
+    "name": "Kinnisvara Kiire Ost",
+    "legalName": "Dailyrent OÜ",
+    "identifier": { "@type": "PropertyValue", "propertyID": "registrikood", "value": "14612787" },
     "description": "Kiire kinnisvara väljaost Tallinnas ja Harjumaal. Ostame korterid ja majad sularahas, mis tahes seisukorras. Pakkumine kirjalikult.",
     "url": "https://example.ee/",
     "telephone": "+372 XXX XXXX",
-    "email": "info@example.ee",
+    "email": "info@kiireost.ee",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Keemia tn 4-17",
       "addressLocality": "Tallinn",
       "addressRegion": "Harjumaa",
+      "postalCode": "10616",
       "addressCountry": "EE"
     },
     "areaServed": [
@@ -803,9 +808,9 @@
 
 <header class="site-header">
   <div class="container">
-    <a href="#" class="logo" aria-label="[FIRMA NIMI] avaleht">
+    <a href="#" class="logo" aria-label="Kinnisvara Kiire Ost avaleht">
       <span class="logo-mark" aria-hidden="true"></span>
-      <span>[FIRMA NIMI]</span>
+      <span>Kinnisvara Kiire Ost</span>
     </a>
     <nav class="nav" aria-label="Pealeht">
       <a href="#eelised">Eelised</a>
@@ -1082,7 +1087,7 @@
           <h2 id="ct-title">Saada päring — vastame tundide jooksul</h2>
           <p>Sisestage aadress ja mõned üksikasjad. Teeme pakkumise ainult kirjalikult pärast objekti ülevaatust.</p>
           <div class="line"><span class="label">Telefon</span><a href="tel:+372XXXXXXX">+372 XXX XXXX</a></div>
-          <div class="line"><span class="label">E-post</span><a href="mailto:info@example.ee">info@example.ee</a></div>
+          <div class="line"><span class="label">E-post</span><a href="mailto:info@kiireost.ee">info@kiireost.ee</a></div>
           <div class="line"><span class="label">Piirkond</span><span>Tallinn ja kogu Harjumaa</span></div>
           <div class="line"><span class="label">Aadress</span><span>Tallinn, Harjumaa</span></div>
         </div>
@@ -1267,15 +1272,20 @@
   <div class="container">
     <div class="foot-grid">
       <div>
-        <span class="foot-brand">[FIRMA NIMI]</span>
+        <span class="foot-brand">Kinnisvara Kiire Ost</span>
         <p>Kiire ja aus kinnisvara väljaost Tallinnas ja kogu Harjumaal. Ostame korterid ja majad sularahas, mis tahes seisukorras — ilma vahendustasudeta. Pakkumine esitatakse ainult kirjalikult.</p>
+        <p style="margin-top:12px;font-size:0.88em;opacity:0.85;line-height:1.55;">
+          Dailyrent OÜ<br />
+          Registrikood: 14612787<br />
+          Keemia tn 4-17, 10616 Tallinn
+        </p>
       </div>
       <div>
         <h4>Kontakt</h4>
         <p>
           Telefon: <a href="tel:+372XXXXXXX">+372 XXX XXXX</a><br />
-          E-post: <a href="mailto:info@example.ee">info@example.ee</a><br />
-          Tallinn, Harjumaa
+          E-post: <a href="mailto:info@kiireost.ee">info@kiireost.ee</a><br />
+          Keemia tn 4-17, 10616 Tallinn
         </p>
       </div>
       <div>
@@ -1284,8 +1294,8 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© <span id="year"></span> [FIRMA NIMI]. Kõik õigused kaitstud.</span>
-      <span>Andmekaitse · Tingimused</span>
+      <span>© <span id="year"></span> Dailyrent OÜ. Kõik õigused kaitstud.</span>
+      <span><a href="/privaatsuspoliitika.html">Privaatsuspoliitika</a></span>
     </div>
   </div>
 </footer>
@@ -1523,7 +1533,7 @@
       .catch(function () {
         setStatus(
           'error',
-          'Päringu saatmine ebaõnnestus. Palun proovige uuesti või kirjutage info@example.ee.'
+          'Päringu saatmine ebaõnnestus. Palun proovige uuesti või kirjutage info@kiireost.ee.'
         );
       })
       .finally(function () {
