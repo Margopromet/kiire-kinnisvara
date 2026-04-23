@@ -54,7 +54,7 @@ export async function onRequest(context) {
   const asukohtMajas = get('asukoht_majas');
 
   // Required fields
-  if (!nimi || !telefon || !noustumine || !turuhinnast_madalam) {
+  if (!nimi || !telefon || !noustumine || !turuhinnastMadalam) {
     return json({
       ok: false,
       error: 'Palun täida nõutud väljad: nimi, telefon, nõusolek andmete töötlemiseks ning nõusolek turuhinnast madalama hinnaga müügiks.',
@@ -97,7 +97,7 @@ export async function onRequest(context) {
   });
 
   const body = {
-    from: 'Kiire Kinnisvara <onboarding@resend.dev>',
+    from: 'Kinnisvara Kiire Ost <info@kiireost.ee>',
     to: ['margarita.prometnaja@gmail.com'],
     subject: `Uus päring: ${nimi}${aadress ? ' — ' + aadress : ''}`,
     html,
