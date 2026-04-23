@@ -97,7 +97,7 @@ export async function onRequest(context) {
   });
 
   const body = {
-    from: 'Kinnisvara Kiire Ost <info@kiireost.ee>',
+    from: 'Kiire Kinnisvara <onboarding@resend.dev>',
     to: ['margarita.prometnaja@gmail.com'],
     subject: `Uus päring: ${nimi}${aadress ? ' — ' + aadress : ''}`,
     html,
