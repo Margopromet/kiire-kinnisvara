@@ -301,6 +301,42 @@
       .hero-form .btn { width: 100%; }
     }
 
+    /* Hero lead + muted subtext */
+    .hero-lead {
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+      line-height: 1.3;
+      max-width: 560px;
+    }
+    .hero-sub-muted {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      max-width: 560px;
+      margin-top: 18px;
+      margin-bottom: 24px;
+    }
+    .hero-visual-lead {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      margin-bottom: 18px;
+      line-height: 1.45;
+    }
+    .hero-visual-cta {
+      display: inline-block;
+      margin-top: 20px;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-primary);
+      padding-bottom: 2px;
+    }
+    .hero-visual-cta:hover { color: var(--color-primary-dark); border-color: var(--color-primary-dark); text-decoration: none; }
+    @media (max-width: 860px) {
+      .hero-lead { font-size: 1.2rem; }
+    }
+
     /* ---------- Sections ---------- */
     section { padding: 88px 0; }
     section.alt { background: var(--color-bg-alt); }
@@ -850,7 +886,7 @@
       <a href="#protsess">Kuidas see käib</a>
       <a href="#vordlus">Võrdlus</a>
       <a href="#kysimused">Küsimused</a>
-      <a href="#kontakt" class="btn">Saada päring</a>
+      <a href="#kontakt" class="btn">Vormista hinnapäring</a>
     </nav>
   </div>
 </header>
@@ -863,9 +899,7 @@
       <div>
         <span class="hero-eyebrow">Tallinn ja Harjumaa</span>
         <h1 id="hero-title">Ostame teie korteri või maja kiirelt — raha kätte 7 päeva jooksul</h1>
-        <p class="hero-sub">
-          Kui soovite kinnisvara müüa ilma pikkade ootuste, maakleritasude ja näitamisteta, teeme objekti ülevaatuse ja ausa kirjaliku pakkumise paari päevaga. Ostame mis tahes seisukorras korterid ja majad Tallinnas ja kogu Harjumaal.
-        </p>
+        <p class="hero-lead">Saa tasuta hinnapakkumine:</p>
 
         <form class="hero-form" id="heroForm" novalidate aria-labelledby="hero-form-label">
           <label id="hero-form-label" for="heroAddress" class="visually-hidden">
@@ -896,6 +930,10 @@
           Palun sisesta täielik aadress — tänav, majanumber ja linn või vald.
         </div>
 
+        <p class="hero-sub hero-sub-muted">
+          Kui soovite kinnisvara müüa ilma pikkade ootuste, maakleritasude ja näitamisteta, teeme objekti ülevaatuse ja ausa kirjaliku pakkumise paari päevaga. Ostame mis tahes seisukorras korterid ja majad Tallinnas ja kogu Harjumaal.
+        </p>
+
         <div class="hero-trust">
           <strong>Ei mingeid vahendustasusid.</strong> Tehing notari juures. Ausalt ja selgelt.
         </div>
@@ -903,22 +941,24 @@
 
       <aside class="hero-visual" aria-label="Ülevaade">
         <h3>Lühidalt teenusest</h3>
+        <p class="hero-visual-lead">Ilma maakleritasude, remondi ja pikkade ootusteta — ausalt ja kiiresti.</p>
         <div class="hero-stats">
           <div class="hero-stat">
             <div class="num">7 päeva</div>
-            <div class="lbl">keskmine tehingu kiirus</div>
+            <div class="lbl">raha kontol pärast notarit</div>
           </div>
           <div class="hero-stat">
             <div class="num">0 €</div>
-            <div class="lbl">maakleritasu või teenustasu</div>
+            <div class="lbl">komisjoni- ja juriidilisi tasusid kliendile</div>
           </div>
         </div>
         <ul class="hero-list">
-          <li><span class="check" aria-hidden="true">✓</span> Korterid, majad ja kinnisvaraosad</li>
+          <li><span class="check" aria-hidden="true">✓</span> Tasuta hinnang 24 tunni jooksul</li>
+          <li><span class="check" aria-hidden="true">✓</span> Mis tahes seisukorras — remont ega koristamine pole vaja</li>
           <li><span class="check" aria-hidden="true">✓</span> Sobib ka hüpoteegi või võlgadega objekt</li>
-          <li><span class="check" aria-hidden="true">✓</span> Renoveerimist ega koristamist pole vaja</li>
-          <li><span class="check" aria-hidden="true">✓</span> Kogu protsess läbipaistev ja notariaalne</li>
+          <li><span class="check" aria-hidden="true">✓</span> Notariaalne tehing, raha otse kontole</li>
         </ul>
+        <a href="#kontakt" class="hero-visual-cta">Täida vorm → tasuta hinnang 24 h jooksul</a>
       </aside>
     </div>
   </section>
@@ -1176,7 +1216,7 @@
       <div class="contact-grid">
         <div class="contact-info">
           <span class="eyebrow">Võtke ühendust</span>
-          <h2 id="ct-title">Saada päring — vastame tundide jooksul</h2>
+          <h2 id="ct-title">Vormista hinnapäring — vastame tundide jooksul</h2>
           <p>Sisestage aadress ja mõned üksikasjad. Teeme pakkumise ainult kirjalikult pärast objekti ülevaatust.</p>
           <div class="line"><span class="label">Telefon</span><a href="tel:+372XXXXXXX">+372 XXX XXXX</a></div>
           <div class="line"><span class="label">E-post</span><a href="mailto:info@kiireost.ee">info@kiireost.ee</a></div>
@@ -1207,7 +1247,7 @@
     tabindex="-1"
   >
     <div class="modal-header">
-      <h2 id="modalTitle">Saada päring</h2>
+      <h2 id="modalTitle">Vormista hinnapäring</h2>
       <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Sulge">×</button>
     </div>
     <p class="modal-intro" id="modalIntro">
@@ -1374,7 +1414,7 @@
         <span class="field-error" data-for="noustumine">Palun kinnita isikuandmete töötlemise nõusolek.</span>
       </div>
 
-      <button type="submit" class="btn" id="submitBtn">Saada päring</button>
+      <button type="submit" class="btn" id="submitBtn">Vormista hinnapäring</button>
     </form>
   </div>
 </div>
