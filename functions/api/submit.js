@@ -52,6 +52,9 @@ export async function onRequest(context) {
   const kommentaar = get('kommentaar');
   const seisukord = get('seisukord');
   const asukohtMajas = get('asukoht_majas');
+  const soovhind = get('soovhind');
+  const turuhinnastMadalamOpt = get('turuhinnastMadalam');
+  const miinimumhind = get('miinimumhind');
 
   // Required fields
   if (!nimi || !telefon || !noustumine || !turuhinnastMadalam) {
@@ -90,6 +93,7 @@ export async function onRequest(context) {
     nimi, telefon, email, aadress, objektTyyp,
     kuulutusLink, korrus, viimaneKorrus, turuhinnastMadalam,
     kommentaar, noustumine,
+    soovhind, turuhinnastMadalamOpt, miinimumhind,
     aadressFull, adrid, ehak, zip, street, house, apartment,
     seisukord,
     asukohtMajas,
@@ -206,6 +210,9 @@ function buildHtml(d) {
     ${korterOnly ? row('Korteri seisukord', seisukordMap[d.seisukord] || '') : ''}
     ${korterOnly ? row('Korteri asukoht majas', asukohtMap[d.asukohtMajas] || '') : ''}
     ${row('Nõus turuhinnast madalama hinnaga', d.turuhinnastMadalam ? 'Jah' : '')}
+    ${row('Soovhind (€)', d.soovhind || 'Ei ole märgitud')}
+    ${row('Valmis kaaluma turuhinnast madalamat pakkumist', d.turuhinnastMadalamOpt === 'jah' ? 'Jah' : 'Ei ole märgitud')}
+    ${row('Minimaalne sobiv hind (€)', d.miinimumhind || 'Ei ole märgitud')}
     ${row('Kommentaar', d.kommentaar)}
     ${row('Nõusolek andmete töötlemiseks', d.noustumine ? 'Jah' : '')}
     ${row('Manuste arv', String(d.attachmentsCount))}

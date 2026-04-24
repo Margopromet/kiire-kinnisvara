@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <title>Ostame korterid ja majad kiiresti Tallinnas ja Harjumaal | Kinnisvara Kiire Ost</title>
-  <meta name="description" content="Müüge oma korter või maja kiirelt. Ostame kinnisvara välja sularahas 7 päevaga Tallinnas ja Harjumaal. Ilma maakleritasudeta, mis tahes seisukorras. Pakkumine kirjalikult." />
+  <meta name="description" content="Müüge oma korter või maja kiirelt. Ostame kinnisvara välja — raha kiirelt kätte 7 päevaga Tallinnas ja Harjumaal. Ilma maakleritasudeta, mis tahes seisukorras. Pakkumine kirjalikult." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://kiireost.ee/" />
 
@@ -13,14 +13,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="et_EE" />
   <meta property="og:title" content="Ostame korterid ja majad kiiresti Tallinnas ja Harjumaal" />
-  <meta property="og:description" content="Kiire ja aus kinnisvara väljaost Tallinnas ja Harjumaal. Sularaha 7 päevaga, mis tahes seisukorras. Pakkumine ainult kirjalikult." />
+  <meta property="og:description" content="Kiire ja aus kinnisvara väljaost Tallinnas ja Harjumaal. Raha kiirelt kätte 7 päevaga, mis tahes seisukorras. Pakkumine ainult kirjalikult." />
   <meta property="og:url" content="https://kiireost.ee/" />
   <meta property="og:site_name" content="Kinnisvara Kiire Ost" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Ostame korterid ja majad kiiresti Tallinnas ja Harjumaal" />
-  <meta name="twitter:description" content="Kiire ja aus kinnisvara väljaost Tallinnas ja Harjumaal. Sularaha 7 päevaga, mis tahes seisukorras." />
+  <meta name="twitter:description" content="Kiire ja aus kinnisvara väljaost Tallinnas ja Harjumaal. Raha kiirelt kätte 7 päevaga, mis tahes seisukorras." />
 
   <!-- Critical inline CSS -->
   <style>
@@ -122,6 +122,8 @@
     }
     .nav a:hover { color: var(--color-accent); text-decoration: none; }
     .nav .btn { padding: 9px 18px; font-size: 0.95rem; }
+    .nav a.btn { color: #fff; background: var(--color-primary); border-color: var(--color-primary); }
+    .nav a.btn:hover, .nav a.btn:focus { color: #fff; background: var(--color-primary-dark); border-color: var(--color-primary-dark); }
     @media (max-width: 720px) {
       .nav { gap: 14px; }
       .nav a:not(.btn) { display: none; }
@@ -667,6 +669,37 @@
     .inads-suggest [role="option"] { padding: 10px 14px; cursor: pointer; color: #1f2328; font-size: 14px; line-height: 1.35; }
     .inads-suggest [role="option"]:hover, .inads-suggest [role="option"][aria-selected="true"] { background: #f1f5ff; }
     .hero-form { position: relative; }
+    /* ---------- Comparison table ---------- */
+    .compare-wrap {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .compare-head, .compare-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+    }
+    .compare-head { background: var(--color-bg-dark); color: #fff; }
+    .compare-head > div { padding: 16px 20px; font-weight: 600; font-size: 0.95rem; }
+    .compare-head .compare-col-ours { background: var(--color-primary); }
+    .compare-row { border-top: 1px solid var(--color-border); }
+    .compare-row:nth-of-type(even) { background: var(--color-bg-alt); }
+    .compare-row > div { padding: 16px 20px; font-size: 1rem; display: flex; align-items: center; }
+    .compare-label { font-weight: 600; color: var(--color-text); }
+    .compare-trad { color: var(--color-text-muted); }
+    .compare-ours { color: var(--color-success); font-weight: 600; background: var(--color-success-bg); }
+    .cmp-mobile-label { display: none; font-weight: 600; margin-right: 6px; color: var(--color-text-muted); }
+    @media (max-width: 720px) {
+      .compare-head { display: none; }
+      .compare-row { grid-template-columns: 1fr; padding: 6px 0; border-top: 6px solid var(--color-border); }
+      .compare-row:first-of-type { border-top: 1px solid var(--color-border); }
+      .compare-row > div { padding: 10px 18px; }
+      .compare-label { background: var(--color-bg-dark); color: #fff; padding: 12px 18px; }
+      .compare-row:nth-of-type(even) .compare-label { background: var(--color-bg-dark); }
+      .cmp-mobile-label { display: inline; }
+    }
   
   </style>
 
@@ -678,7 +711,7 @@
     "name": "Kinnisvara Kiire Ost",
     "legalName": "Dailyrent OÜ",
     "identifier": { "@type": "PropertyValue", "propertyID": "registrikood", "value": "14612787" },
-    "description": "Kiire kinnisvara väljaost Tallinnas ja Harjumaal. Ostame korterid ja majad sularahas, mis tahes seisukorras. Pakkumine kirjalikult.",
+    "description": "Kiire kinnisvara väljaost Tallinnas ja Harjumaal. Ostame korterid ja majad — raha kiirelt kätte, mis tahes seisukorras. Pakkumine kirjalikult.",
     "url": "https://kiireost.ee",
     "telephone": "+372 XXX XXXX",
     "email": "info@kiireost.ee",
@@ -815,6 +848,7 @@
     <nav class="nav" aria-label="Pealeht">
       <a href="#eelised">Eelised</a>
       <a href="#protsess">Kuidas see käib</a>
+      <a href="#vordlus">Võrdlus</a>
       <a href="#kysimused">Küsimused</a>
       <a href="#kontakt" class="btn">Saada päring</a>
     </nav>
@@ -906,7 +940,7 @@
         </article>
         <article class="card">
           <div class="card-icon" aria-hidden="true">02</div>
-          <h3>Sularaha</h3>
+          <h3>Raha kiirelt kätte</h3>
           <p>Kogu summa kantakse kontole tehingu päeval. Ei osamakseid ega kuupõhiseid graafikuid.</p>
         </article>
         <article class="card">
@@ -1074,6 +1108,59 @@
             <p>Üldjuhul läheb vaja isikut tõendavat dokumenti, omandiõigust tõendavat paberit ning ühistu tõendit võlgnevuste kohta. Pärandvara korral lisandub pärimistunnistus. Täpse nimekirja saadame teile pärast päringut.</p>
           </div>
         </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPARISON ============ -->
+  <section id="vordlus" class="alt" aria-labelledby="cmp-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Kõrvutus</span>
+        <h2 id="cmp-title">Võrdlus: tavapärane müük vs meie teenus</h2>
+        <p>Vaadake, kuidas klassikaline kinnisvaramüük ja meie teenus peamistes punktides erinevad.</p>
+      </div>
+      <div class="compare-wrap" role="table" aria-label="Võrdlustabel">
+        <div class="compare-head" role="row">
+          <div class="compare-col compare-col-label" role="columnheader" aria-label="Aspekt"></div>
+          <div class="compare-col compare-col-traditional" role="columnheader">Tavapärane müük</div>
+          <div class="compare-col compare-col-ours" role="columnheader">Meie teenus</div>
+        </div>
+      <div class="compare-row">
+        <div class="compare-label">Maakleri komisjon</div>
+        <div class="compare-trad"><span class="cmp-mobile-label">Tavapärane:</span>3–5% + käibemaks</div>
+        <div class="compare-ours"><span class="cmp-mobile-label">Meie teenus:</span>0 €</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Reklaam, fotod, kuulutused</div>
+        <div class="compare-trad"><span class="cmp-mobile-label">Tavapärane:</span>200–500 €</div>
+        <div class="compare-ours"><span class="cmp-mobile-label">Meie teenus:</span>0 €</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Juriidilised kulud, notar</div>
+        <div class="compare-trad"><span class="cmp-mobile-label">Tavapärane:</span>200–600 €</div>
+        <div class="compare-ours"><span class="cmp-mobile-label">Meie teenus:</span>Sisaldub pakkumises</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Aeg tehinguni</div>
+        <div class="compare-trad"><span class="cmp-mobile-label">Tavapärane:</span>3–6 kuud</div>
+        <div class="compare-ours"><span class="cmp-mobile-label">Meie teenus:</span>Kuni 2 nädalat</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Vaatamised</div>
+        <div class="compare-trad"><span class="cmp-mobile-label">Tavapärane:</span>10–30 korda</div>
+        <div class="compare-ours"><span class="cmp-mobile-label">Meie teenus:</span>Üks ülevaatus</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Ettevalmistus (remont, staging)</div>
+        <div class="compare-trad"><span class="cmp-mobile-label">Tavapärane:</span>Sageli vajalik</div>
+        <div class="compare-ours"><span class="cmp-mobile-label">Meie teenus:</span>Ei ole vajalik</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Pakkumise kindlus</div>
+        <div class="compare-trad"><span class="cmp-mobile-label">Tavapärane:</span>Tehing võib katkeda</div>
+        <div class="compare-ours"><span class="cmp-mobile-label">Meie teenus:</span>Garanteeritud</div>
+      </div>
       </div>
     </div>
   </section>
@@ -1255,6 +1342,26 @@
       </div>
 
       <div class="field">
+        <label for="soovhind">Soovhind (€)</label>
+        <input type="text" inputmode="numeric" id="soovhind" name="soovhind" placeholder="nt 250 000" autocomplete="off" />
+        <span class="hint" style="display:block;margin-top:6px;">Valikuline — aitab kiiremini pakkumist koostada.</span>
+      </div>
+
+      <div class="field">
+        <label class="checkbox" for="turuhinnastMadalam">
+          <input type="checkbox" id="turuhinnastMadalam" name="turuhinnastMadalam" value="jah" />
+          <span>Olen valmis kaaluma pakkumist, mis on turuhinnast veidi madalam</span>
+        </label>
+        <span class="hint" style="display:block;margin-top:6px;">Valikuline</span>
+      </div>
+
+      <div class="field">
+        <label for="miinimumhind">Minimaalne sobiv hind (€)</label>
+        <input type="text" inputmode="numeric" id="miinimumhind" name="miinimumhind" placeholder="nt 220 000" autocomplete="off" />
+        <span class="hint" style="display:block;margin-top:6px;">Valikuline — ainult meile, kliendile ei näidata.</span>
+      </div>
+
+      <div class="field">
         <label class="checkbox" for="noustumine">
           <input type="checkbox" id="noustumine" name="noustumine" required />
           <span>Annan nõusoleku oma isikuandmete töötlemiseks pakkumise tegemise eesmärgil vastavalt isikuandmete kaitse üldmäärusele (GDPR). Andmeid ei edastata kolmandatele isikutele.</span>
@@ -1273,7 +1380,7 @@
     <div class="foot-grid">
       <div>
         <span class="foot-brand">Kinnisvara Kiire Ost</span>
-        <p>Kiire ja aus kinnisvara väljaost Tallinnas ja kogu Harjumaal. Ostame korterid ja majad sularahas, mis tahes seisukorras — ilma vahendustasudeta. Pakkumine esitatakse ainult kirjalikult.</p>
+        <p>Kiire ja aus kinnisvara väljaost Tallinnas ja kogu Harjumaal. Ostame korterid ja majad — raha kiirelt kätte, mis tahes seisukorras — ilma vahendustasudeta. Pakkumine esitatakse ainult kirjalikult.</p>
         <p style="margin-top:12px;font-size:0.88em;opacity:0.85;line-height:1.55;">
           Dailyrent OÜ<br />
           Registrikood: 14612787<br />
