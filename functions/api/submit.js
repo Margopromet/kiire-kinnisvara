@@ -98,7 +98,7 @@ export async function onRequest(context) {
 
   const body = {
     from: 'Kinnisvara Kiire Ost <info@kiireost.ee>',
-    to: ['margarita.prometnaja@gmail.com'],
+    to: ['info@kiireost.ee'],
     subject: `Uus päring: ${nimi}${aadress ? ' — ' + aadress : ''}`,
     html,
   };
@@ -119,6 +119,36 @@ export async function onRequest(context) {
       const text = await res.text().catch(() => '');
       console.error('Resend error', res.status, text.slice(0, 200));
       return json({ ok: false, error: 'Saatmine ebaõnnestus. Proovi hiljem uuesti.' }, 500);
+    }
+
+    // Saadame kliendile automaatse kinnituse, kui e-post anti (parim pingutus, ei blokeeri vastust).
+    if (email) {
+      try {
+        const clientHtml = `<p>Tere${nimi ? ', ' + nimi : ''}!</p>
+<p>Täname teid päringu eest. Saime selle kätte ja võtame teiega ühendust 1 tööpäeva jooksul, et leppida kokku objekti ülevaatuse aeg. Ülevaatuse järel esitame teile kirjaliku ja mittesiduva pakkumise.</p>
+<p>Kui teil on vahepeal küsimusi või täiendusi, kirjutage julgesti aadressile <a href="mailto:info@kiireost.ee">info@kiireost.ee</a>.</p>
+<p>Parimate soovidega,<br>Kinnisvara Kiire Ost<br><a href="mailto:info@kiireost.ee">info@kiireost.ee</a><br><a href="https://kiireost.ee">kiireost.ee</a></p>`;
+        const clientRes = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: 'Kinnisvara Kiire Ost <info@kiireost.ee>',
+            to: [email],
+            subject: 'Aitäh päringu eest! — Kinnisvara Kiire Ost',
+            html: clientHtml,
+            reply_to: 'info@kiireost.ee',
+          }),
+        });
+        if (!clientRes.ok) {
+          const ctxt = await clientRes.text().catch(() => '');
+          console.error('Client confirmation email failed', clientRes.status, ctxt.slice(0, 200));
+        }
+      } catch (ce) {
+        console.error('Client confirmation email threw', String(ce).slice(0, 200));
+      }
     }
 
     return json({ ok: true }, 200);
