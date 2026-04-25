@@ -1691,6 +1691,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           'success',
           'Aitäh! Teie päring on saadetud. Võtame teiega ühendust 1 tööpäeva jooksul ülevaatuse aja kokkuleppimiseks. Pakkumise esitame kirjalikult pärast ülevaatust.'
         );
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({event: 'form_submit_success'});
       })
       .catch(function () {
         setStatus(
