@@ -55,6 +55,9 @@ export async function onRequest(context) {
   const soovhind = get('soovhind');
   const turuhinnastMadalamOpt = get('turuhinnastMadalam');
   const miinimumhind = get('miinimumhind');
+  // Page language ('et' or 'ru'): determines language of client confirmation email.
+  const langRaw = (form.get('lang') || '').toString().trim().toLowerCase();
+  const lang = langRaw === 'ru' ? 'ru' : 'et';
 
   // Required fields
   if (!nimi || !telefon || !noustumine || !turuhinnastMadalam) {
@@ -128,10 +131,17 @@ export async function onRequest(context) {
     // Saadame kliendile automaatse kinnituse, kui e-post anti (parim pingutus, ei blokeeri vastust).
     if (email) {
       try {
-        const clientHtml = `<p>Tere${nimi ? ', ' + nimi : ''}!</p>
+        const clientHtmlEt = `<p>Tere${nimi ? ', ' + nimi : ''}!</p>
 <p>Täname teid päringu eest. Saime selle kätte ja võtame teiega ühendust 1 tööpäeva jooksul, et leppida kokku objekti ülevaatuse aeg. Ülevaatuse järel esitame teile kirjaliku ja mittesiduva pakkumise.</p>
 <p>Kui teil on vahepeal küsimusi või täiendusi, kirjutage julgesti aadressile <a href="mailto:info@kiireost.ee">info@kiireost.ee</a>.</p>
 <p>Parimate soovidega,<br>Kinnisvara Kiire Ost<br><a href="mailto:info@kiireost.ee">info@kiireost.ee</a><br><a href="https://kiireost.ee">kiireost.ee</a></p>`;
+        const clientHtmlRu = `<p>Здравствуйте${nimi ? ', ' + nimi : ''}!</p>
+<p>Спасибо за вашу заявку. Мы её получили и свяжемся с вами в течение 1 рабочего дня, чтобы согласовать время осмотра объекта. После осмотра пришлём вам письменное и необязывающее предложение.</p>
+<p>Если у вас за это время появятся вопросы или дополнения — пишите нам на <a href="mailto:info@kiireost.ee">info@kiireost.ee</a>.</p>
+<p>С уважением,<br>Kiireost (Kinnisvara Kiire Ost)<br><a href="mailto:info@kiireost.ee">info@kiireost.ee</a><br><a href="https://kiireost.ee/ru/">kiireost.ee/ru</a></p>`;
+        const clientHtml = lang === 'ru' ? clientHtmlRu : clientHtmlEt;
+        const clientSubject = lang === 'ru' ? 'Спасибо за заявку! — Kiireost' : 'Aitäh päringu eest! — Kinnisvara Kiire Ost';
+        const clientFrom = lang === 'ru' ? 'Kiireost <info@kiireost.ee>' : 'Kinnisvara Kiire Ost <info@kiireost.ee>';
         const clientRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
@@ -139,9 +149,9 @@ export async function onRequest(context) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            from: 'Kinnisvara Kiire Ost <info@kiireost.ee>',
+            from: clientFrom,
             to: [email],
-            subject: 'Aitäh päringu eest! — Kinnisvara Kiire Ost',
+            subject: clientSubject,
             html: clientHtml,
             reply_to: 'info@kiireost.ee',
           }),
