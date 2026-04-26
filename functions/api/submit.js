@@ -5,7 +5,7 @@
 
 // TODO: After deploying the Apps Script web app, paste the deployment URL between the quotes below.
 // Until set, the Sheets push is skipped — emails still send normally.
-const SHEETS_WEBHOOK_URL = '';
+const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbz8joGza4h8TUhvty7wD6vwcxU2neXWicflfIau9DNRKqknD7EFWGxBX-5shg6NrJg/exec';
 
 export async function onRequest(context) {
   const { request, env } = context;
