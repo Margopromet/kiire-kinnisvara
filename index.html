@@ -1907,31 +1907,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       selected = null;
       clearTimeout(debounceT);
       if (q.length < 3) { closeList(); return; }
-      debounceT = setTimeout(function () { fetchSuggest(q, render); }, 200);
-    });
-
-    input.addEventListener('keydown', function (e) {
-      var open = list.classList.contains('open');
-      if (e.key === 'ArrowDown') {
-        if (!open && currentItems.length) { openList(); setActive(0); e.preventDefault(); return; }
-        if (open) { e.preventDefault(); setActive((activeIdx + 1) % currentItems.length); }
-      } else if (e.key === 'ArrowUp') {
-        if (open) { e.preventDefault(); setActive((activeIdx - 1 + currentItems.length) % currentItems.length); }
-      } else if (e.key === 'Enter') {
-        if (open && activeIdx >= 0) { e.preventDefault(); pick(activeIdx); }
-      } else if (e.key === 'Escape') {
-        if (open) { e.preventDefault(); closeList(); }
-      }
-    });
-
-    document.addEventListener('click', function (e) {
-      if (e.target !== input && !list.contains(e.target)) closeList();
-    });
-
-    window.__inadsSelected = function () { return selected; };
-  
-  /* ================= 2-step navigation ================= */
+      debounceT = setTimeout/* ================= 2-step navigation (self-contained) ================= */
   (function () {
+    var leadForm = document.getElementById('leadForm');
     var step1 = document.getElementById('formStep1');
     var step2 = document.getElementById('formStep2');
     var goNext = document.getElementById('goToStep2');
@@ -1939,7 +1917,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var stepNum = document.getElementById('formStepNum');
     var fill = document.getElementById('formProgressFill');
     var leadIdInput = document.getElementById('leadId');
-    if (!step1 || !step2 || !goNext || !goBack) return;
+    if (!leadForm || !step1 || !step2 || !goNext || !goBack) return;
+
+    function clearStep1Errors() {
+      ['nimi','telefon','email','aadress'].forEach(function(name){
+        var el = leadForm.querySelector('[name="' + name + '"]');
+        if (el) el.classList.remove('invalid');
+        var err = leadForm.querySelector('.field-error[data-for="' + name + '"]');
+        if (err) err.classList.remove('show');
+      });
+    }
+    function showErr(name) {
+      var el = leadForm.querySelector('[name="' + name + '"]');
+      if (el) el.classList.add('invalid');
+      var err = leadForm.querySelector('.field-error[data-for="' + name + '"]');
+      if (err) err.classList.add('show');
+    }
+    function isLikelyAddr(v) {
+      v = (v || '').trim();
+      var nonWs = v.replace(/\s+/g, '');
+      if (nonWs.length < 4) return false;
+      if (/^\d+$/.test(nonWs)) return false;
+      return true;
+    }
 
     function showStep(n) {
       if (n === 1) { step1.hidden = false; step2.hidden = true; }
@@ -1950,11 +1950,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     function validStep1() {
-      clearErrors();
+      clearStep1Errors();
       var ok = true; var firstInvalid = null;
       function fail(name) {
         ok = false;
-        showFieldError(name);
+        showErr(name);
         if (!firstInvalid) firstInvalid = leadForm.querySelector('[name="' + name + '"]');
       }
       if ((leadForm.nimi.value || '').trim().length < 2) fail('nimi');
@@ -1963,7 +1963,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var mail = (leadForm.email.value || '').trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) fail('email');
       var adr = (leadForm.aadress.value || '').trim();
-      if (!isLikelyAddress(adr)) fail('aadress');
+      if (!isLikelyAddr(adr)) fail('aadress');
       if (!ok && firstInvalid) firstInvalid.focus();
       return ok;
     }
@@ -1981,6 +1981,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         epost: (leadForm.email.value||'').trim(),
         aadress: (leadForm.aadress.value||'').trim()
       };
+      var done = function () {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({event: 'form_step1_complete'});
+        goNext.disabled = false;
+        goNext.textContent = orig;
+        showStep(2);
+      };
       fetch('/api/submit-partial', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -1989,19 +1996,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         .then(function (data) {
           if (data && data.leadId && leadIdInput) leadIdInput.value = data.leadId;
         })
-        .catch(function () { /* swallow — still let user advance */ })
-        .finally(function () {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({event: 'form_step1_complete'});
-          goNext.disabled = false;
-          goNext.textContent = orig;
-          showStep(2);
-        });
+        .catch(function () {})
+        .finally(done);
     });
 
-    goBack.addEventListener('click', function () {
-      showStep(1);
-    });
+    goBack.addEventListener('click', function () { showStep(1); });
   })();
 
 </script>
