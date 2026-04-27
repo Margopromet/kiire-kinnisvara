@@ -1,1 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" role="img" aria-label="LHV"><text x="100" y="34" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="900" fill="#E60000" letter-spacing="0">LHV</text></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="304.20108"
+   height="102.29771"
+   viewBox="0 0 304.20109 102.29774"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="LHV logo.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.3191964"
+     inkscape:cx="-9.4754653"
+     inkscape:cy="42.071066"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title1">Page 1</title>
+  <desc
+     id="desc1">Created with Sketch.</desc>
+  <defs
+     id="defs1" />
+  <g
+     id="Investor-2"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     transform="scale(3.6534899)">
+    <g
+       id="MENÜÜ-Copy"
+       transform="translate(-170,-2932)"
+       fill="#202020">
+      <g
+         id="juhtimine-copy"
+         transform="translate(-2,2911)">
+        <g
+           id="Group-2-Copy-4"
+           transform="translate(172)">
+          <g
+             id="Group-5">
+            <path
+               d="M 43.096949,21 41.362074,32.241904 H 31.90378 L 33.635739,21.005415 H 21.50328 V 44.893367 H 8.7685098 L 12.376966,21.005415 0,21.002499 V 49 h 29.393731 l 1.888993,-12.685203 h 9.485369 L 38.855774,49 h 9.952307 L 52.84307,25.121629 61.715297,49 h 8.783922 L 83.263147,21.002499 76.407789,21.001666 70.029366,35.715401 69.305425,37.504426 68.606061,35.70957 63.043632,21.005415 Z"
+               id="Page-1" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Page 1</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
