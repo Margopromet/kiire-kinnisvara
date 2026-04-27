@@ -120,10 +120,9 @@
       gap: 10px;
     }
     .logo-mark {
-      width: 32px; height: 32px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      width: 40px; height: 40px;
       display: inline-block;
+      flex-shrink: 0;
     }
     .nav { display: flex; gap: 28px; align-items: center; }
     .nav a {
@@ -704,6 +703,14 @@
       gap: 16px;
       flex-wrap: wrap;
     }
+    .foot-credits {
+      flex-basis: 100%;
+      font-size: 0.78rem;
+      opacity: 0.75;
+      color: #8e9ba8;
+      line-height: 1.5;
+    }
+    .foot-credits a { color: inherit; text-decoration: underline; }
     @media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr; gap: 24px; } }
 
     /* accessible focus */
@@ -982,8 +989,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header class="site-header">
   <div class="container">
-    <a href="#" class="logo" aria-label="Kiireost — главная">
-      <span class="logo-mark" aria-hidden="true"></span>
+    <a href="/ru/" class="logo" aria-label="Kiireost — главная">
+      <img class="logo-mark" src="/favicon.svg" alt="" aria-hidden="true" width="40" height="40">
       <span>Kiireost</span>
     </a>
     <nav class="nav" aria-label="Главная">
@@ -1665,6 +1672,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="foot-bottom">
       <span>© <span id="year"></span> Dailyrent OÜ. Все права защищены.</span>
       <span><a href="/ru/konfidentsialnost.html">Политика конфиденциальности</a></span>
+      <span class="foot-credits">Изображения: Liilia Moroz, Erko (Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener nofollow">CC BY-SA 4.0</a>).</span>
     </div>
   </div>
 </footer>
