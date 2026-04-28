@@ -52,6 +52,7 @@ export async function onRequest(context) {
   const seisukord = get('seisukord');
   const asukohtMajas = get('asukoht_majas');
   const soovhind = get('soovhind');
+  const vabastamiseAeg = get('vabastamiseAeg');
   const leadId = get('leadId');
 
   const langRaw = (form.get('lang') || '').toString().trim().toLowerCase();
@@ -83,7 +84,7 @@ export async function onRequest(context) {
 
   const html = buildHtml({
     nimi, telefon, email, aadress, objektTyyp, ruume, pindala,
-    korrus, viimaneKorrus, turuhinnastMadalam, lisainfo, noustumine,
+    korrus, viimaneKorrus, turuhinnastMadalam, lisainfo, noustumine, vabastamiseAeg,
     soovhind, aadressFull, adrid, ehak, zip, street, house, apartment,
     seisukord, asukohtMajas, leadId,
     attachmentsCount: attachments.length,
@@ -152,7 +153,7 @@ export async function onRequest(context) {
             type: 'full', leadId, lang,
             nimi, telefon, epost: email, aadress,
             'tüüp': objektTyyp, tyyp: objektTyyp,
-            ruume, pindala, korrus, seisukord, soovhind,
+            ruume, pindala, korrus, seisukord, soovhind, vabastamiseAeg,
             turuhinnastMadalam: turuhinnastMadalam ? 'jah' : '',
             lisainfo, source: '',
             timestamp: new Date().toISOString(),
@@ -201,7 +202,7 @@ function buildHtml(d) {
     uusarendus: 'Uusarendus',
   };
   const asukohtMap = { otsakorter: 'Otsakorter', keskmine: 'Maja keskel' };
-  return `<!doctype html><html><body style="font-family:-apple-system,Segoe UI,Arial,sans-serif;color:#111827"><h2 style="margin:0 0 12px">Uus päring kodulehelt</h2><p style="margin:0 0 12px;color:#6b7280">kiireost.ee</p><table style="border-collapse:collapse;border:1px solid #e5e7eb;min-width:480px">${row('Nimi', d.nimi)}${row('Telefon', d.telefon)}${row('E-post', d.email)}${row('Aadress', d.aadress)}${row('Aadress (täistekst In-ADS)', d.aadressFull)}${row('ADRID', d.adrid)}${row('EHAK', d.ehak)}${row('Sihtnumber', d.zip)}${row('Tänav', d.street)}${row('Majanumber', d.house)}${row('Korteri nr', d.apartment)}${row('Objekti tüüp', d.objektTyyp)}${row('Tubade arv', d.ruume)}${row('Pindala (m²)', d.pindala)}${korterOnly ? row('Korrus', d.korrus) : ''}${korterOnly ? row('Viimane korrus', d.viimaneKorrus === 'on' || d.viimaneKorrus === 'jah' || d.viimaneKorrus === 'true' ? 'Jah' : '') : ''}${korterOnly ? row('Korteri seisukord', seisukordMap[d.seisukord] || '') : ''}${korterOnly ? row('Korteri asukoht majas', asukohtMap[d.asukohtMajas] || '') : ''}${row('Nõus turuhinnast madalama hinnaga', d.turuhinnastMadalam ? 'Jah' : '')}${row('Soovhind (€)', d.soovhind || 'Ei ole märgitud')}${row('Lisainfo', d.lisainfo)}${row('Lead ID (step-1 link)', d.leadId)}${row('Nõusolek andmete töötlemiseks', d.noustumine ? 'Jah' : '')}${row('Manuste arv', String(d.attachmentsCount))}</table></body></html>`;
+  return `<!doctype html><html><body style="font-family:-apple-system,Segoe UI,Arial,sans-serif;color:#111827"><h2 style="margin:0 0 12px">Uus päring kodulehelt</h2><p style="margin:0 0 12px;color:#6b7280">kiireost.ee</p><table style="border-collapse:collapse;border:1px solid #e5e7eb;min-width:480px">${row('Nimi', d.nimi)}${row('Telefon', d.telefon)}${row('E-post', d.email)}${row('Aadress', d.aadress)}${row('Aadress (täistekst In-ADS)', d.aadressFull)}${row('ADRID', d.adrid)}${row('EHAK', d.ehak)}${row('Sihtnumber', d.zip)}${row('Tänav', d.street)}${row('Majanumber', d.house)}${row('Korteri nr', d.apartment)}${row('Objekti tüüp', d.objektTyyp)}${row('Tubade arv', d.ruume)}${row('Pindala (m²)', d.pindala)}${korterOnly ? row('Korrus', d.korrus) : ''}${korterOnly ? row('Viimane korrus', d.viimaneKorrus === 'on' || d.viimaneKorrus === 'jah' || d.viimaneKorrus === 'true' ? 'Jah' : '') : ''}${korterOnly ? row('Korteri seisukord', seisukordMap[d.seisukord] || '') : ''}${korterOnly ? row('Korteri asukoht majas', asukohtMap[d.asukohtMajas] || '') : ''}${row('Nõus turuhinnast madalama hinnaga', d.turuhinnastMadalam ? 'Jah' : '')}${row('Soovhind (€)', d.soovhind || 'Ei ole märgitud')}${row('Vabastamise aeg', d.vabastamiseAeg || 'Ei ole märgitud')}${row('Lisainfo', d.lisainfo)}${row('Lead ID (step-1 link)', d.leadId)}${row('Nõusolek andmete töötlemiseks', d.noustumine ? 'Jah' : '')}${row('Manuste arv', String(d.attachmentsCount))}</table></body></html>`;
 }
 
 function toBase64(u8) {
