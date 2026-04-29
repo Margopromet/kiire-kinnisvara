@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kiireost.ee/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/" />
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://kiireost.ee/ru/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/" />
@@ -20,16 +20,26 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://kiireost.ee/" />
   </url>
   <url>
-    <loc>https://kiireost.ee/privaatsuspoliitika.html</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-    <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/privaatsuspoliitika.html" />
-    <xhtml:link rel="alternate" hreflang="ru-ee" href="https://kiireost.ee/ru/konfidentsialnost.html" />
+    <loc>https://kiireost.ee/muu-korter-tallinnas/</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/muu-korter-tallinnas/" />
+    <xhtml:link rel="alternate" hreflang="ru-ee" href="https://kiireost.ee/ru/prodat-kvartiru-tallinn/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kiireost.ee/muu-korter-tallinnas/" />
   </url>
   <url>
-    <loc>https://kiireost.ee/ru/konfidentsialnost.html</loc>
-    <lastmod>2026-04-26</lastmod>
+    <loc>https://kiireost.ee/ru/prodat-kvartiru-tallinn/</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/muu-korter-tallinnas/" />
+    <xhtml:link rel="alternate" hreflang="ru-ee" href="https://kiireost.ee/ru/prodat-kvartiru-tallinn/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kiireost.ee/muu-korter-tallinnas/" />
+  </url>
+  <url>
+    <loc>https://kiireost.ee/privaatsuspoliitika.html</loc>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/privaatsuspoliitika.html" />
