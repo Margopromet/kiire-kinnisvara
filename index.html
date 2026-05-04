@@ -1010,7 +1010,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#kysimused">Küsimused</a>
             <span class="lang-switch" aria-label="Keele valik"><a href="/" class="active" aria-current="page" hreflang="et" lang="et">ET</a><span class="sep">|</span><a href="/ru/" hreflang="ru" lang="ru">RU</a></span>
       <a href="tel:+37253383191" class="header-phone" aria-label="Helista +372 5338 3191">+372 5338 3191</a>
-      <a href="#kontakt" class="btn">Vormista hinnapäring</a>
+      <a href="#" data-form-trigger class="btn">Vormista hinnapäring</a>
     </nav>
   </div>
 </header>
@@ -1083,7 +1083,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><span class="check" aria-hidden="true">✓</span> Sobib ka hüpoteegi või võlgadega objekt</li>
           <li><span class="check" aria-hidden="true">✓</span> Notariaalne tehing, raha otse kontole</li>
         </ul>
-        <a href="#kontakt" class="hero-visual-cta">Täida vorm → tasuta hinnang 24 h jooksul</a>
+        <a href="#" data-form-trigger class="hero-visual-cta">Täida vorm → tasuta hinnang 24 h jooksul</a>
       </aside>
     </div>
   </section>
@@ -1200,7 +1200,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </article>
         </div>
         <div class="proptypes-cta">
-          <a href="#kontakt" class="btn">Vormista hinnapäring</a>
+          <a href="#" data-form-trigger class="btn">Vormista hinnapäring</a>
         </div>
       </div>
     </section>
@@ -1435,7 +1435,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><span class="check" aria-hidden="true">✓</span> Kuni 6 kuud lisaaega vabastamiseks — vastastikusel kokkuleppel</li>
         <li><span class="check" aria-hidden="true">✓</span> Kõik tingimused notariaalses lepingus</li>
       </ul>
-      <p style="text-align:center;margin-top:24px;"><a class="btn" href="#kontakt">Räägime tingimustest →</a></p>
+      <p style="text-align:center;margin-top:24px;"><a class="btn" href="#" data-form-trigger>Räägime tingimustest →</a></p>
     </div>
   </section>
 
@@ -2188,5 +2188,121 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     goBack.addEventListener('click', function () { showStep(1); });
   })();
 </script>
+
+<style>
+    /* ==== Form Modal (CTA → popup) ==== */
+    .form-modal { position: fixed; inset: 0; z-index: 1000; display: none; align-items: flex-start; justify-content: center; padding: 32px 16px; overflow-y: auto; }
+    .form-modal[data-open] { display: flex; }
+    .form-modal__backdrop { position: absolute; inset: 0; background: rgba(11,34,55,.65); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+    .form-modal__panel { position: relative; background: #fff; border-radius: 16px; padding: 32px; max-width: 640px; width: 100%; margin: auto; max-height: calc(100vh - 64px); overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+    .form-modal__panel h2 { margin: 0 0 8px; padding-right: 32px; font-size: 1.4rem; }
+    .form-modal__intro { color: #5a6779; margin: 0 0 18px; }
+    .form-modal__close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; background: none; border: none; font-size: 28px; cursor: pointer; color: #5a6779; line-height: 1; padding: 0; border-radius: 8px; }
+    .form-modal__close:hover { color: #1a2540; background: #f1f4f8; }
+    .form-modal__panel form .field { margin-bottom: 14px; }
+    .form-modal__panel form label { display: block; font-weight: 600; font-size: .92rem; margin-bottom: 6px; color: #1a2540; }
+    .form-modal__panel form input[type="text"],
+    .form-modal__panel form input[type="tel"],
+    .form-modal__panel form input[type="email"],
+    .form-modal__panel form textarea { width: 100%; padding: 10px 12px; border: 1px solid #d4dae3; border-radius: 8px; font-family: inherit; font-size: 1rem; background: #fff; }
+    .form-modal__panel form textarea { min-height: 90px; resize: vertical; }
+    .form-modal__panel form input:focus, .form-modal__panel form textarea:focus { outline: 2px solid #2563eb; outline-offset: 1px; border-color: #2563eb; }
+    .form-modal__panel form .checkbox { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: .9rem; color: #1a2540; }
+    .form-modal__panel form .checkbox input { margin-top: 3px; }
+    .form-modal__panel form button[type="submit"] { width: 100%; padding: 12px 18px; background: #1a2540; color: #fff; border: none; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 6px; }
+    .form-modal__panel form button[type="submit"]:hover { background: #0b2237; }
+    .form-modal__panel form button[type="submit"][disabled] { opacity: .6; cursor: wait; }
+    .form-modal__status { padding: 10px 12px; border-radius: 8px; margin: 0 0 12px; display: none; font-size: .92rem; }
+    .form-modal__status[data-state="success"] { display: block; background: #d4f7dd; color: #136332; }
+    .form-modal__status[data-state="error"] { display: block; background: #ffe3e3; color: #8c1c1c; }
+    .form-modal__hp { position: absolute; left: -9999px; top: -9999px; }
+    @media (max-width: 600px) { .form-modal__panel { padding: 24px; } .form-modal__panel h2 { font-size: 1.2rem; } }
+  </style>
+
+<!-- ============ FORM MODAL (CTA popup) ============ -->
+<div class="form-modal" id="formModal" role="dialog" aria-modal="true" aria-labelledby="formModalTitle" hidden>
+  <div class="form-modal__backdrop" data-close></div>
+  <div class="form-modal__panel">
+    <button type="button" class="form-modal__close" data-close aria-label="Sulge">×</button>
+    <h2 id="formModalTitle">Vormista hinnapäring</h2>
+    <p class="form-modal__intro">Täida vorm, võtame ühendust ülevaatuse aja kokkuleppimiseks. Pakkumine esitatakse ainult kirjalikult pärast objekti ülevaatust.</p>
+    <div class="form-modal__status" id="formModalStatus" role="status" aria-live="polite"></div>
+    <form id="formModalForm" action="/api/submit" method="POST" enctype="multipart/form-data" novalidate>
+      <input type="text" name="botcheck" class="form-modal__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <input type="hidden" name="lang" value="et" />
+      <input type="hidden" name="source" value="cta-modal" />
+      <div class="field">
+        <label for="fm-nimi">Nimi</label>
+        <input type="text" id="fm-nimi" name="nimi" autocomplete="name" placeholder="Mari Maasikas" required />
+      </div>
+      <div class="field">
+        <label for="fm-telefon">Telefon</label>
+        <input type="tel" id="fm-telefon" name="telefon" autocomplete="tel" placeholder="+372 5xxx xxxx" required />
+      </div>
+      <div class="field">
+        <label for="fm-email">E-post</label>
+        <input type="email" id="fm-email" name="email" autocomplete="email" placeholder="nimi@example.com" />
+      </div>
+      <div class="field">
+        <label for="fm-aadress">Objekti aadress</label>
+        <input type="text" id="fm-aadress" name="aadress" placeholder="nt Tartu mnt 10, Tallinn" />
+      </div>
+      <div class="field">
+        <label for="fm-sonum">Lisainfo (valikuline)</label>
+        <textarea id="fm-sonum" name="sonum" placeholder="Lühike kirjeldus objektist…"></textarea>
+      </div>
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" name="noustumine" value="jah" required />
+          <span>Annan nõusoleku oma isikuandmete töötlemiseks pakkumise tegemise eesmärgil vastavalt isikuandmete kaitse üldmäärusele (GDPR). Andmeid ei edastata kolmandatele isikutele.</span>
+        </label>
+      </div>
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" name="turuhinnastMadalam" value="jah" required />
+          <span>Olen nõus kaaluma müüki turuhinnast madalama hinnaga (kiire väljaost).</span>
+        </label>
+      </div>
+      <button type="submit" id="formModalSubmit">Vormista hinnapäring</button>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  var modal=document.getElementById('formModal'); if(!modal) return;
+  var status=document.getElementById('formModalStatus');
+  var form=document.getElementById('formModalForm');
+  var submitBtn=document.getElementById('formModalSubmit');
+  var SUCCESS="Aitäh! Saime su päringu kätte ja võtame ühendust esimesel võimalusel.";
+  var ERR="Vormi saatmine ebaõnnestus. Palun proovi uuesti või helista meile.";
+  var SUBMIT_LABEL="Vormista hinnapäring";
+  var prevFocus=null;
+  function open(){ prevFocus=document.activeElement; modal.setAttribute('data-open',''); modal.removeAttribute('hidden'); document.body.style.overflow='hidden'; var first=modal.querySelector('input,textarea,button'); if(first) try{first.focus();}catch(e){} }
+  function close(){ modal.removeAttribute('data-open'); modal.setAttribute('hidden',''); document.body.style.overflow=''; if(status){status.textContent='';status.removeAttribute('data-state');} if(prevFocus && prevFocus.focus) try{prevFocus.focus();}catch(e){} }
+  document.querySelectorAll('[data-form-trigger]').forEach(function(btn){ btn.addEventListener('click', function(e){ e.preventDefault(); open(); }); });
+  modal.querySelectorAll('[data-close]').forEach(function(el){ el.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.hasAttribute('data-open')) close(); });
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      submitBtn.disabled=true; submitBtn.textContent='…';
+      status.removeAttribute('data-state'); status.textContent='';
+      var fd=new FormData(form);
+      fetch(form.action,{method:'POST',body:fd}).then(function(r){return r.json().catch(function(){return {ok:r.ok};});}).then(function(j){
+        if(j && j.ok){
+          status.setAttribute('data-state','success'); status.textContent=SUCCESS;
+          form.reset();
+          if(window.dataLayer){window.dataLayer.push({event:'form_submit_success',source:'cta-modal'});}
+          setTimeout(close, 3000);
+        } else {
+          status.setAttribute('data-state','error'); status.textContent=(j && j.error) || ERR;
+        }
+      }).catch(function(){ status.setAttribute('data-state','error'); status.textContent=ERR; })
+      .finally(function(){ submitBtn.disabled=false; submitBtn.textContent=SUBMIT_LABEL; });
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
