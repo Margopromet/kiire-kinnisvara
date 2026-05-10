@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kiireost.ee/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/" />
@@ -153,4 +153,22 @@
   <url><loc>https://kiireost.ee/ru/blog/kvartira-s-ipotekoy/</loc><lastmod>2026-05-08</lastmod><priority>0.7</priority></url>
   <url><loc>https://kiireost.ee/blog/kuidas-kontrollida-firmat/</loc><lastmod>2026-05-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://kiireost.ee/ru/blog/proverit-kompaniyu-vykupa/</loc><lastmod>2026-05-09</lastmod><priority>0.7</priority></url>
+  <url>
+    <loc>https://kiireost.ee/blog/dokumendid-korteri-muumiseks/</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/blog/dokumendid-korteri-muumiseks/" />
+    <xhtml:link rel="alternate" hreflang="ru-ee" href="https://kiireost.ee/ru/blog/dokumenty-dlya-prodazhi/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kiireost.ee/blog/dokumendid-korteri-muumiseks/" />
+  </url>
+  <url>
+    <loc>https://kiireost.ee/ru/blog/dokumenty-dlya-prodazhi/</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/blog/dokumendid-korteri-muumiseks/" />
+    <xhtml:link rel="alternate" hreflang="ru-ee" href="https://kiireost.ee/ru/blog/dokumenty-dlya-prodazhi/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kiireost.ee/blog/dokumendid-korteri-muumiseks/" />
+  </url>
 </urlset>
