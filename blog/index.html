@@ -866,7 +866,7 @@
       <a href="/#kysimused">Küsimused</a>
             <span class="lang-switch" aria-label="Keele valik"><a href="/blog/muu-korter-tallinnas/" class="active" aria-current="page" hreflang="et" lang="et">ET</a><span class="sep">|</span><a href="/ru/prodat-kvartiru-tallinn/" hreflang="ru">RU</a></span>
       <a href="tel:+37253383191" class="header-phone" aria-label="Helista +372 5338 3191">+372 5338 3191</a>
-      <a href="#" data-form-trigger class="btn">Vormista hinnapäring</a>
+      <a href="#" data-form-trigger="" class="btn">Vormista hinnapäring</a>
     </nav>
   </div>
 </header>
@@ -875,7 +875,12 @@
     <div class="container">
       <h1>Kiireost blogi — kinnisvara kiire müük Eestis</h1>
       <p style="max-width:760px;font-size:1.05rem;line-height:1.6;">Praktilised nõuanded ja juhtumid Eesti kinnisvara kiireks müügiks. Räägime, kuidas käib korteri või maja kiire väljaost — pärandvara, võlgade, hüpoteegi või lihtsalt halvas seisus objektide korral. Selgitame müügi protsessi, juriidikat ja hinnastamist, et oskaksid teha teadliku otsuse, kas pöörduda otseostja, maakleri või avaliku kuulutuse poole. Blogi täieneb regulaarselt: jagame juhtumiuuringuid, hindade trende ja praktilisi näpunäiteid Tallinna ja Harjumaa kinnisvara müüjatele.</p>
-    </div>
+    <article>
+        <h3><a href="/blog/korteri-hindamine/">Tasuta korteri hindamine — kuidas käib</a></h3>
+        <p>Korteri hindamine annab objektiivse lähtepunkti müügihinna määramiseks. Vaatame, kuidas Kiireosti tasuta hindamine praktikas käib, mis mõjutab korteri väärtust ning mille poolest erineb hindamisakt indikatiivsest hinnapakkumisest.</p>
+        <p><a href="/blog/korteri-hindamine/">Loe edasi →</a></p>
+      </article>
+      </div>
   </section>
   <section>
     <div class="container">
@@ -1058,32 +1063,32 @@
   </style>
 
 <!-- ============ FORM MODAL (CTA popup) ============ -->
-<div class="form-modal" id="formModal" role="dialog" aria-modal="true" aria-labelledby="formModalTitle" hidden>
-  <div class="form-modal__backdrop" data-close></div>
+<div class="form-modal" id="formModal" role="dialog" aria-modal="true" aria-labelledby="formModalTitle" hidden="">
+  <div class="form-modal__backdrop" data-close=""></div>
   <div class="form-modal__panel">
-    <button type="button" class="form-modal__close" data-close aria-label="Sulge">×</button>
+    <button type="button" class="form-modal__close" data-close="" aria-label="Sulge">×</button>
     <h2 id="formModalTitle">Vormista hinnapäring</h2>
     <p class="form-modal__intro">Täida vorm, võtame ühendust ülevaatuse aja kokkuleppimiseks. Pakkumine esitatakse ainult kirjalikult pärast objekti ülevaatust.</p>
     <div class="form-modal__status" id="formModalStatus" role="status" aria-live="polite"></div>
-    <form id="formModalForm" action="/api/submit" method="POST" enctype="multipart/form-data" novalidate>
-      <input type="text" name="botcheck" class="form-modal__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-      <input type="hidden" name="lang" value="et" />
-      <input type="hidden" name="source" value="cta-modal" />
+    <form id="formModalForm" action="/api/submit" method="POST" enctype="multipart/form-data" novalidate="">
+      <input type="text" name="botcheck" class="form-modal__hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="lang" value="et">
+      <input type="hidden" name="source" value="cta-modal">
       <div class="field">
         <label for="fm-nimi">Nimi</label>
-        <input type="text" id="fm-nimi" name="nimi" autocomplete="name" placeholder="Mari Maasikas" required />
+        <input type="text" id="fm-nimi" name="nimi" autocomplete="name" placeholder="Mari Maasikas" required="">
       </div>
       <div class="field">
         <label for="fm-telefon">Telefon</label>
-        <input type="tel" id="fm-telefon" name="telefon" autocomplete="tel" placeholder="+372 5xxx xxxx" required />
+        <input type="tel" id="fm-telefon" name="telefon" autocomplete="tel" placeholder="+372 5xxx xxxx" required="">
       </div>
       <div class="field">
         <label for="fm-email">E-post</label>
-        <input type="email" id="fm-email" name="email" autocomplete="email" placeholder="nimi@example.com" />
+        <input type="email" id="fm-email" name="email" autocomplete="email" placeholder="nimi@example.com">
       </div>
       <div class="field">
         <label for="fm-aadress">Objekti aadress</label>
-        <input type="text" id="fm-aadress" name="aadress" placeholder="nt Tartu mnt 10, Tallinn" />
+        <input type="text" id="fm-aadress" name="aadress" placeholder="nt Tartu mnt 10, Tallinn">
       </div>
       <div class="field">
         <label for="fm-sonum">Lisainfo (valikuline)</label>
@@ -1091,13 +1096,13 @@
       </div>
       <div class="field">
         <label class="checkbox">
-          <input type="checkbox" name="noustumine" value="jah" required />
+          <input type="checkbox" name="noustumine" value="jah" required="">
           <span>Annan nõusoleku oma isikuandmete töötlemiseks pakkumise tegemise eesmärgil vastavalt isikuandmete kaitse üldmäärusele (GDPR). Andmeid ei edastata kolmandatele isikutele.</span>
         </label>
       </div>
       <div class="field">
         <label class="checkbox">
-          <input type="checkbox" name="turuhinnastMadalam" value="jah" required />
+          <input type="checkbox" name="turuhinnastMadalam" value="jah" required="">
           <span>Olen nõus kaaluma müüki turuhinnast madalama hinnaga (kiire väljaost).</span>
         </label>
       </div>
