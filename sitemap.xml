@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kiireost.ee/</loc>
-    <lastmod>2026-05-27</lastmod>
+    <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/" />
@@ -395,6 +395,16 @@
     <loc>https://kiireost.ee/ru/blog/ceny-kvartir-tallinn-2026/</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kiireost.ee/blog/müük-ilma-hindamisaktita/</loc>
+    <lastmod>2026-05-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kiireost.ee/ru/blog/prodazha-bez-otsenki/</loc>
+    <lastmod>2026-05-28</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>
