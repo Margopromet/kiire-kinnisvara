@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kiireost.ee/</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/" />
@@ -424,5 +424,15 @@
     <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/blog/kasutatud-korter-vs-uusarendus/" />
     <xhtml:link rel="alternate" hreflang="ru-ee" href="https://kiireost.ee/ru/blog/vtorichka-vs-novostroyka/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://kiireost.ee/blog/kasutatud-korter-vs-uusarendus/" />
+  </url>
+  <url>
+    <loc>https://kiireost.ee/blog/müügi-ettevalmistus/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kiireost.ee/ru/blog/podgotovka-k-prodazhe/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>
