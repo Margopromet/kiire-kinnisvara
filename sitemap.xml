@@ -2,8 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://kiireost.ee/</loc>
-    <lastmod>2026-06-21</lastmod>
+  <loc>https://kiireost.ee/</loc>
+  <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/" />
@@ -565,4 +565,6 @@
     <lastmod>2026-06-21</lastmod>
     <priority>0.7</priority>
   </url>
+  <url><loc>https://kiireost.ee/blog/hruschov-vs-9-paneel/</loc><lastmod>2026-06-25</lastmod><priority>0.7</priority></url>
+  <url><loc>https://kiireost.ee/ru/blog/hruschov-vs-9-etazhka/</loc><lastmod>2026-06-25</lastmod><priority>0.7</priority></url>
 </urlset>
