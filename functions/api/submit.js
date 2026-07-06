@@ -55,6 +55,30 @@ export async function onRequest(context) {
   const vabastamiseAeg = get('vabastamiseAeg');
   const leadId = get('leadId');
 
+  // Attribution capture (from URL params + referrer, sent by client)
+  const gclid = get('gclid');
+  const utm_source = get('utm_source');
+  const utm_medium = get('utm_medium');
+  const utm_campaign = get('utm_campaign');
+  const utm_term = get('utm_term');
+  const utm_content = get('utm_content');
+  const referrer = get('referrer');
+  const landing_page = get('landing_page');
+
+  let source = 'direct';
+  if (gclid) {
+    source = 'google-cpc:' + gclid.substring(0, 12);
+  } else if (utm_source && utm_medium) {
+    source = utm_source + '/' + utm_medium + (utm_campaign ? '/' + utm_campaign : '');
+  } else if (referrer) {
+    try {
+      const refUrl = new URL(referrer);
+      if (refUrl.hostname && !refUrl.hostname.includes('kiireost.ee')) {
+        source = 'ref:' + refUrl.hostname;
+      }
+    } catch (_) {}
+  }
+
   const langRaw = (form.get('lang') || '').toString().trim().toLowerCase();
   const lang = langRaw === 'ru' ? 'ru' : 'et';
 
@@ -155,7 +179,7 @@ export async function onRequest(context) {
             'tüüp': objektTyyp, tyyp: objektTyyp,
             ruume, pindala, korrus, seisukord, soovhind, vabastamiseAeg,
             turuhinnastMadalam: turuhinnastMadalam ? 'jah' : '',
-            lisainfo, source: '',
+            lisainfo, source, gclid, utm_campaign, landing_page,
             timestamp: new Date().toISOString(),
           }),
         });

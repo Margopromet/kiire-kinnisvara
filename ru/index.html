@@ -993,6 +993,36 @@
     ]
   }
   </script>
+<script>
+(function(){
+  try {
+    var p = new URLSearchParams(window.location.search);
+    var a = {
+      gclid: p.get('gclid') || '',
+      utm_source: p.get('utm_source') || '',
+      utm_medium: p.get('utm_medium') || '',
+      utm_campaign: p.get('utm_campaign') || '',
+      utm_term: p.get('utm_term') || '',
+      utm_content: p.get('utm_content') || '',
+      referrer: document.referrer || '',
+      landing_page: window.location.pathname
+    };
+    var existing = null;
+    try { existing = sessionStorage.getItem('kiireost_attribution'); } catch(_){}
+    if (a.gclid || a.utm_source || (!existing && a.referrer)) {
+      try { sessionStorage.setItem('kiireost_attribution', JSON.stringify(a)); } catch(_){}
+    }
+  } catch(_){}
+  window.__kiireostAttachAttribution = function(fd){
+    try {
+      var raw = sessionStorage.getItem('kiireost_attribution');
+      if (!raw) return;
+      var attr = JSON.parse(raw);
+      for (var k in attr) { if (attr[k]) fd.append(k, attr[k]); }
+    } catch(_){}
+  };
+})();
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1943,6 +1973,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var data = new FormData(leadForm);
     // If last-floor is checked, ensure floor number is not sent (defensive)
     if (viimaneKorrus.checked) data.set('korrus', '');
+    if (window.__kiireostAttachAttribution) window.__kiireostAttachAttribution(data);
 
     fetch(leadForm.action, { method: 'POST', body: data })
       .then(function (r) {
@@ -2287,6 +2318,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       submitBtn.disabled=true; submitBtn.textContent='…';
       status.removeAttribute('data-state'); status.textContent='';
       var fd=new FormData(form);
+      if (window.__kiireostAttachAttribution) window.__kiireostAttachAttribution(fd);
       fetch(form.action,{method:'POST',body:fd}).then(function(r){return r.json().catch(function(){return {ok:r.ok};});}).then(function(j){
         if(j && j.ok){
           status.setAttribute('data-state','success'); status.textContent=SUCCESS;
