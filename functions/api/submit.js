@@ -116,7 +116,7 @@ export async function onRequest(context) {
 
   const body = {
     from: 'Kinnisvara Kiire Ost <info@kiireost.ee>',
-    to: ['info@kiireost.ee'],
+    to: ['info@kiireost.ee', 'margarita.prometnaja@gmail.com'],
     subject: `Uus päring: ${nimi}${aadress ? ' — ' + aadress : ''}`,
     html,
   };
