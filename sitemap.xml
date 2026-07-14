@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kiireost.ee/</loc>
-    <lastmod>2026-07-12</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/" />
@@ -607,4 +607,14 @@
   </url>
   <url><loc>https://kiireost.ee/blog/korterimuuja-tuupilised-vead/</loc><lastmod>2026-07-13</lastmod><priority>0.7</priority></url>
   <url><loc>https://kiireost.ee/ru/blog/tipichnye-oshibki-prodavca/</loc><lastmod>2026-07-13</lastmod><priority>0.7</priority></url>
-</urlset>
+  <url>
+    <loc>https://kiireost.ee/blog/petturi-ostja-tuvastamine/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kiireost.ee/ru/blog/kak-uznat-moshennika-pokupatelya/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <priority>0.7</priority>
+  </url>
+  </urlset>
