@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kiireost.ee/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="et-ee" href="https://kiireost.ee/" />
@@ -631,4 +631,14 @@
   <url><loc>https://kiireost.ee/ru/blog/nalog-mnogo-kvartir/</loc><lastmod>2026-07-17</lastmod><priority>0.7</priority></url>
   <url><loc>https://kiireost.ee/blog/ebaseaduslik-umberkujundus/</loc><lastmod>2026-07-18</lastmod><priority>0.7</priority></url>
   <url><loc>https://kiireost.ee/ru/blog/nezakonnaya-pereplanirovka/</loc><lastmod>2026-07-18</lastmod><priority>0.7</priority></url>
+  <url>
+    <loc>https://kiireost.ee/blog/vykup-domov-tallinn/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kiireost.ee/ru/blog/maja-kiirost-tallinnas/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.7</priority>
+  </url>
 </urlset>
